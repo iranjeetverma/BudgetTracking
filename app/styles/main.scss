@@ -4,6 +4,7 @@
 body{
 	margin:0px;
 	background: $page-background;
+	font-family: sans-serif;
 }
 .header{
 	height: 40px;
@@ -11,8 +12,7 @@ body{
 	background-color: #e3e8f4;
 }
 .nav-bar{
-	height:100px;
-	width: 300px;
+	width: 200px;
 	background-color: #29394a;
 }
 .nav-bar {
@@ -21,6 +21,9 @@ body{
     padding: 0;
     list-style: none;
   }
-
-  li {}
+  li {
+		height: 25px;
+		padding: 20px;
+		color:#fff;
+	}
 }
