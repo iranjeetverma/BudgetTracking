@@ -1,0 +1,11 @@
+<div class="graphcontainer"  ng-controller="MainCtrl">
+  <div class="budget" ng-repeat="budget in budgets">
+    <div>
+        {{ budget.budgetname}}
+        {{budget.color}}
+        {{budget.amount}}
+    </div>
+  </div>
+
+  <a ng-href="#/head">New Head</a>
+</div>

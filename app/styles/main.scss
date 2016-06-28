@@ -10,20 +10,67 @@ body{
 	height: 40px;
 	border-bottom: 1px solid $border-color;
 	background-color: #e3e8f4;
+	color: $text-color;
+	.logo{
+		margin-top:5px;
+		margin-left: 15px;
+	}
+	.user{
+		float: right;
+    margin-right: 30px;
+    margin-top: 10px;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	.username{
+		font-size:13px;
+		vertical-align: middle;
+	}
+	.user-menu{
+		vertical-align: middle;
+	}
 }
-.nav-bar{
-	width: 200px;
-	background-color: #29394a;
-}
+
 .nav-bar {
+	background-color: #29394a;
+	float: left;
+	height: 100vh;
+	width: 220px;
   ul {
-    margin: 0;
-    padding: 0;
     list-style: none;
+		padding: 0;
   }
   li {
-		height: 25px;
-		padding: 20px;
-		color:#fff;
+		padding: 15px;
+		color: #fff;
+		font-size: 14px;
+		transition: .2s;
+		&:hover{
+			background: #4a484a;
+			cursor: pointer;
+		}
 	}
+}
+.graphcontainer{
+		height: 200px;
+		width: 1100px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+    display:inline-block;
+    margin:3px;
+    vertical-align:top;
+}
+.progressbar {
+    color: #fff;
+    text-align: right;
+    height: 25px;
+    border-radius: 1px;
+    margin-bottom: 5px;
+}
+.budget{
+		width: 1000px;
+		height: 50px;
+		border: 1px solid #AAA;
 }
