@@ -1,10 +1,15 @@
 @import "colors";
 @import "dimen";
 
+*{
+	outline: none;
+}
 body{
 	margin:0px;
 	background: $page-background;
 	font-family: sans-serif;
+	font-size: 14px;
+	color: $text-color
 }
 .header{
 	height: 40px;
@@ -44,7 +49,6 @@ body{
   li {
 		padding: 15px;
 		color: #fff;
-		font-size: 14px;
 		transition: .2s;
 		&:hover{
 			background: #4a484a;
@@ -52,25 +56,89 @@ body{
 		}
 	}
 }
-.graphcontainer{
-		height: 200px;
-		width: 1100px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    overflow: hidden;
-    display:inline-block;
-    margin:3px;
-    vertical-align:top;
+.container{
+	border: 1px solid #ddd;
+	margin: 5px;
+	margin-left: 225px;
+  padding: 5px;
 }
 .progressbar {
-    color: #fff;
-    text-align: right;
-    height: 25px;
-    border-radius: 1px;
-    margin-bottom: 5px;
+  color: #fff;
+  text-align: right;
+  height: 25px;
+  border-radius: 1px;
+  margin-bottom: 5px;
 }
 .budget{
-		width: 1000px;
-		height: 50px;
-		border: 1px solid #AAA;
+	margin-top: 15px;
+}
+.bar{
+	width: 0px;
+	height: 20px;
+	margin-right: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	transition: all 1.5s ease-in-out;
+}
+.budget-title {
+  display: inline-block;
+  width: 140px;
+  font-size: 14px;
+  vertical-align: middle;
+	text-align: right;
+  margin-right: 10px;
+}
+.budget-amount{
+	vertical-align: middle;
+}
+.budget-info{
+	margin-top: 15px;
+	height: 40px;
+}
+.button{
+	float: right;
+	border: none;
+	color: #fff;
+	height: 33px;
+	width: 120px;
+	border-radius: 2px;
+}
+.button-green{
+	@extend .button;
+	background-color: #497017;
+}
+.percent{
+	@extend .budget-amount;
+	color: #73b927;
+}
+.requisition-tile{
+	border: 1px solid #ddd;
+	display: flex;
+	height: 50px;
+	background-color: #c5d3e7;
+	border: 1px solid;
+
+	.tile{
+			flex: .25;
+			text-align: center;
+			padding-top:10px;
+			border-right: 1px solid;
+			color:#898d92;
+			&:last-child{
+				border-right: none;
+			}
+			.amBudget{
+				border: none;
+				background-color: #fff;
+				padding: 2px 5px;
+				color:#898d92;
+				width:100px;
+			}
+			.title-title{
+				font-size: 12px;
+			}
+			.title-value{
+				height: 22px;
+			}
+	}
 }
