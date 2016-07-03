@@ -13,6 +13,8 @@
    $routeProvider
    .when('/home', {templateUrl: 'views/shopsummary.html', controller: 'MainCtrl'})
    .when('/head', {templateUrl: 'views/newHead.html', controller: 'MainCtrl'})
+   .when('/requtionform', {templateUrl: 'views/requtionform.html', controller: 'MainCtrl'})
+   .when('/poform', {templateUrl: 'views/poform.html', controller: 'MainCtrl'})
    .otherwise({redirectTo: '/home'})
  }])
 
@@ -25,6 +27,7 @@
      {id:'3', name:'Paint Shop'},
      {id:'4', name:'Machine Shop'},
      {id:'5', name:'4wh BIW'}]
+   $scope.selectedShopForNewHead = $scope.shops[0]
 
    $scope.user = {id:'1', name:'Shripad S Pathak'}
 
@@ -40,13 +43,16 @@
   })
   $scope.utilisation = {percent:((100/$scope.budgets[1].amount) * $scope.budgets[2].amount).toFixed(2) + '%'}
 
-  $scope.requisition ={
-                          id:'1',
-                          requisitionname:'Conveyor Repair',
-                          budget: 1200000,
-                          amendedBudget: 1250000,
-                          amountutilized:950000,
-                          utilisation:12,
-                        }
+  $scope.requisition ={ id:'1',
+                        requisitionname:'Conveyor Repair',
+                        budget: 1200000,
+                        amendedBudget: 1250000,
+                        amountutilized:950000,
+                        Utilized:12
+                      }
 
+  $scope.selectedShopForNav = $scope.shops[0]
+  $scope.selectShop = function(shop){
+    $scope.selectedShopForNav = shop
+  }
  }
