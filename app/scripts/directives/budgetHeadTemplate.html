@@ -1,0 +1,22 @@
+<div class = "requisition-tile" ng-repeat="head in heads">
+  <div class = "tile">
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+    <span>{{head.headname}}</span>
+  </div>
+  <div class = "tile">
+    <div class='title-value'>Rs.{{head.budget}}</div>
+    <span class='title-title'>Budget</span>
+  </div>
+  <div class = "tile">
+    <div class='title-value'>Rs. <input type="text"  class="amBudget" ng-model="head.amendedbudget"></div>
+    <span class='title-title'>Amanded Budget</span>
+  </div>
+  <div class = "tile">
+    <div class='title-value'>Rs.{{head.amountutilized}}</div>
+    <span class='title-title'>Amount Utilixed</span>
+  </div>
+  <div class = "tile">
+    <div class='title-value'>{{head.Utilized}}</div>
+    <span class='title-title'>% Utilisation</span>
+  </div>
+</div>

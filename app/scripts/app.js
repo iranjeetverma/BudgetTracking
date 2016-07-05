@@ -8,8 +8,4 @@
  *
  * Main module of the application.
  */
-angular
-  .module('budgetTrackingApp', [
-    'ngAnimate',
-    'ngSanitize'
-  ]);
+angular.module('budgetTrackingApp', ['ngAnimate','ngSanitize','ngRoute']);

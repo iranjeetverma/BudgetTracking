@@ -1,8 +1,7 @@
-<div class = "nav-bar" ng-controller="MainCtrl">
+<div class = "nav-bar" ng-controller="ShopCtrl" ng-init="getShops()">
   <ul>
-    <li ng-repeat="shop in shops" ng-class="{selected: selectedShopForNav.id == shop.id}" ng-click='selectShop(shop)'>
-      {{ shop.name }}
+    <li ng-repeat="shop in shops" ng-class="{selected: selectedShopForNav._id == shop._id}" ng-click='selectShop(shop)'>
+      {{shop.shopname}}
     </li>
   </ul>
-  {{selectedShopForNav.id}}
 </div>

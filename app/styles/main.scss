@@ -100,10 +100,13 @@ body{
 .button{
 	border: none;
 	color: #fff;
-	height: 33px;
-	width: 120px;
+	padding: 10px;
+	min-width: 120px;
 	border-radius: 2px;
-	margin-right: 5px;
+	margin: 5px;	
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
 	&:hover{
 		cursor: pointer;
 	}
