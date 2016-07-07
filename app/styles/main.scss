@@ -5,8 +5,8 @@
 	outline: none;
 }
 body{
-	margin:0px;
-	background: $page-background;
+	margin:0px;	
+	background-color: #29394a;
 	font-family: sans-serif;
 	font-size: 14px;
 	color: $text-color
@@ -37,32 +37,40 @@ body{
 	}
 }
 
-.nav-bar {
-	background-color: #29394a;
+.nav-bar {	
 	float: left;
-	height: 100vh;
 	width: 220px;
   ul {
     list-style: none;
-		padding: 0;
+	padding: 0;
+	margin-top: 30px;
   }
   li {
 		padding: 15px;
 		color: #fff;
 		transition: .2s;
-		&:hover, &.selected{
-			background: #4a484a;
+		&:hover{
 			cursor: pointer;
+			background: lighten(#4a484a, 5%);
+		}
+		&.selected{
+			background: #4a484a;			
 		}&.not-selected{
 			background: tranparent;
 		}
 	}
 }
+#main{
+	padding: 15px; 
+	float: left;
+}
 .container{
 	border: 1px solid #ddd;
-	margin: 5px;
-	margin-left: 225px;
-  padding: 5px;
+	margin: 15px;
+  	padding: 15px;
+  	overflow: hidden;
+  	background: #fff;
+  	min-width: 850px;
 }
 .progressbar {
   color: #fff;
@@ -145,34 +153,38 @@ body{
 	height: 50px;
 	background-color: #c9c7c9;
 	border: 1px solid;
-
+	margin-top: 5px;
 	.tile{
-			flex: .25;
-			text-align: center;
-			padding-top:10px;
-			border-right: 1px solid;
+		flex: .25;
+		text-align: center;
+		padding-top:10px;
+		border-right: 1px solid;
+		color:#898d92;
+		&:last-child{
+			border-right: none;
+		}
+		.amBudget{
+			border: none;
+			background-color: #fff;
+			padding: 2px 5px;
 			color:#898d92;
-			&:last-child{
-				border-right: none;
-			}
-			.amBudget{
-				border: none;
-				background-color: #fff;
-				padding: 2px 5px;
-				color:#898d92;
-				width:100px;
-			}
-			.title-title{
-				font-size: 12px;
-			}
-			.title-value{
-				height: 22px;
-			}
+			width:100px;
+		}.disabled{
+			background-color: #aaa;
+		}
+		.title-title{
+			font-size: 12px;
+		}
+		.title-value{
+			height: 22px;
+		}
+	}.selector{
+		cursor: pointer;
 	}
 }
 .Requisition-container{
 	margin: 5px;
-	margin-left: 50px;
+	margin-left: 35px;
 }
 .requisitiondetalis-tile{
 	border: 1px solid #ddd;
@@ -191,7 +203,7 @@ body{
 	flex: .25;
 }
 .alinment{
-	padding: 12px;
+	padding: 7px;
 	color: #898d92;
 }
 
@@ -200,8 +212,7 @@ body{
 	margin-left: 70px;
 }
 .POdetalis-tile{
-	@extend .requisitiondetalis-tile;
-	height: 45px;
+	@extend .requisitiondetalis-tile;	
 }
 .POdetalis-tile div:nth-of-type(1) {flex-grow: 1;}
 .POdetalis-tile div:nth-of-type(2) {flex-grow: 1;}

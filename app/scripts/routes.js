@@ -8,11 +8,5 @@ angular.module('budgetTrackingApp').config(['$routeProvider', function($routePro
    		templateUrl: 'views/newHead.html', 
    		controller: 'MainCtrl'
    	})
-
-   .when('/popup', {
-         templateUrl: 'views/formpopup.html', 
-         controller: 'popupCtrl'
-      })
-   
    .otherwise({redirectTo: '/home'})
  }])

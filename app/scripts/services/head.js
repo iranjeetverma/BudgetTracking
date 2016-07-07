@@ -1,19 +1,13 @@
 'use strict';
 
-
-
-/**
- * @ngdoc service
- * @name budgetTrackingApp.Head
- * @description
- * # Head
- * Service in the budgetTrackingApp.
- */
 angular.module('budgetTrackingApp')
   .factory('HeadService', ['$http', 'entribServices', function ($http, entribServices) {
     return {
     	getHeads: function () {
-    		return $http.get(entribServices.headURL)
+    		return $http.get(entribServices.headURL + entribServices.queryParams)
+    	},
+    	updateHead: function (head_id, data) {
+    		return $http.put(entribServices.headURL + '/' + head_id + entribServices.queryParams, data)
     	}
     }
   }]);
