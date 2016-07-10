@@ -1,12 +1,11 @@
-<div class = "form-container" ng-controller = "MainCtrl">
+<div class = "form-container" ng-controller = "RequisitionCtrl">
     <div class = "form-title">
       <div class = "title">Fixed Cost Requestion Form</div>
-      <div class = "newhead">NEW HEAD</div>
     </div>
     <div class = "form-title">
-        <div class = "division-name">Division:</div>
-        <div class = "budget-name" >Budget Head:</div>
-        <div class = "date" class = "">Date:{{ today | date : "dd/MM/y" }}</span></div>
+        <div class = "division-name">Division:</div>               
+        <div class = "budget-name" >Budget Head: {{activeHead.headname}}</div>
+        <div class = "date" class = "">Date: {{ today | date:"dd/MM/yyyy"}}</span></div>
     </div>
 </div>
 <form class = "container">
@@ -158,9 +157,10 @@
       </div>
     </div>
   </div>
+  <div class="button-group">
+    <button class = "button-grashgreen"> Save </button>
+    <button class = "button-brown" onClick="window.print()">Print</button>
+    <a href = "#/home"><button class = "button-lightblue">Cancel</button></a>
+  </div>
 </div>
-<div class="button-group">
-  <button class = "button-grashgreen"> Save </button>
-  <button class = "button-brown" onClick="window.print()">Print</button>
-  <a href = "#/home"><button class = "button-lightblue">Cancel</button></a>
-</div>
+

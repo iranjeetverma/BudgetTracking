@@ -4,8 +4,8 @@ angular.module('budgetTrackingApp').config(['$routeProvider', function($routePro
    		templateUrl: 'views/shopsummary.html', 
    		controller: 'ShopCtrl'
    })
-   .when('/head', {
-   		templateUrl: 'views/newHead.html', 
+   .when('/requisition', {
+   		templateUrl: 'views/requisition.html', 
    		controller: 'MainCtrl'
    	})
    .otherwise({redirectTo: '/home'})

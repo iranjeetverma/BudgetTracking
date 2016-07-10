@@ -9,11 +9,11 @@
       </div>
     </div>
     <div class = "budget-info" >
-      <span class= "budget-title">% Utilization</span>
+      <span class= "budget-title">%Utilization</span>
       <span class= "percent">
         {{ utilisation.percent | number: 2 }}
       </span>
-      <button class = "button-green" ng-cilck = 'groupbudget()'>Group Budget</button>
+      <button class = "button-green">Group Budget</button>
     </div>
   </div>
   <!-- Graph Container end-->
@@ -22,7 +22,9 @@
   <budget-head></budget-head>
     <div>
       <a class = "button-grashgreen"> Save </a>
-      <a href = "#/head" class = "button-lightblue">Create New Head</a>
+      <a class = "button-lightblue">Create New Head</a>
     </div>
   </div>
+  <pop-up></pop-up>
 </div>
+
