@@ -124,7 +124,6 @@ function generateGraph($scope, $rootScope){
 }
 
 function loadShopData($scope, $rootScope, HeadService, RequisitionService, POService){
-  
   HeadService.getHeads().success(function(headData){
     if(headData && headData.results){
         $scope.heads = headData.results      
@@ -163,8 +162,9 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
                   generateGraph($scope, $rootScope) 
                 })              
             }
-        })             
-      }
+        })
+        $rootScope.heads = $scope.heads;
+      }      
   })
 }
 function calcShopBudgets($scope, $rootScope){
