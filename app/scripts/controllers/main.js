@@ -12,7 +12,6 @@
 angular.module('budgetTrackingApp').controller('MainCtrl', 
   ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 
     function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog) {
-
       $rootScope.$on('shopselected', function(e, shop){
         $scope.shop = shop
         if(!$scope.heads){

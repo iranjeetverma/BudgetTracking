@@ -313,7 +313,7 @@ textarea{
 	font-family: sans-serif;
 }
 
-table {
+table.group-budget {
 	font-size: 90%;
 	width: 100%;
 	thead{
@@ -349,6 +349,29 @@ table {
 			background: #ddd;
 		}
 	}	
+}
+
+table.requisition-form{
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	color: #333;
+	tr:first-child td{
+		padding: 20px;
+		border: 1px solid #ddd;
+		border-right: none;
+	}
+	td{
+		border: 1px solid #ddd;
+		border-top: none;
+		border-right: none; 
+		text-align: center;		
+		width: 15%;
+	}
+	tr td:last-child{
+		padding: 10px;
+		border-right: 1px solid #ddd;
+	}
 }
 
 [tooltip]::after{

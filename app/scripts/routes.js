@@ -6,7 +6,7 @@ angular.module('budgetTrackingApp').config(['$routeProvider', function($routePro
     })
     .when('/requisition', {
     		templateUrl: 'views/requisition.html', 
-    		controller: 'MainCtrl'
+    		controller: 'RequisitionCtrl'
     	})
     .otherwise({redirectTo: '/home'})
  }])
