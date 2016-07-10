@@ -5,6 +5,9 @@ angular.module('budgetTrackingApp')
     return {
     	getPO: function () {
     		return $http.get(entribServices.poURL + entribServices.queryParams)
+    	},
+    	savePO: function(data){
+    		return $http.post(entribServices.poURL+ entribServices.queryParams, data)
     	}
     }
   }]);

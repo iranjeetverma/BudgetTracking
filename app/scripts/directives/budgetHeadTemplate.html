@@ -19,7 +19,7 @@
       <span class='title-title'>Amount Utilized</span>
     </div>
     <div class = "tile">
-      <div class='title-value'>{{(head.amountutilized/head.amendedbudget)*100 | number: 2 }}</div>
+      <div class='title-value'>{{ (head.amendedbudget ==0 ? 0: (head.amountutilized/head.amendedbudget)*100) | number: 2 }}</div>
       <span class='title-title'>% Utilisation</span>
     </div>  
   </div>

@@ -10,6 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
     <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -21,7 +22,7 @@
     <div ng-include="'views/header.html'"></div>
     <div ng-include="'views/side-nav.html'" class="nav-bar"></div>
     <div id="main">
-        <div ng-view></div>
+        <ng-view></ng-view>
     </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -30,6 +31,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
+    <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -54,9 +56,8 @@
         <script src="scripts/directives/budgetRequisition.js"></script>
         <script src="scripts/directives/budgetPO.js"></script>
        
-
-
         <script src="scripts/filters/shop.js"></script>
+        <script src="scripts/filters/length.js"></script>
 
         <!-- endbuild -->
 </body>

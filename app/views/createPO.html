@@ -1,0 +1,31 @@
+<div>
+	<h1> Create New PO </h1>
+	<form class="dialog-form">
+		<div>
+			<input type="hidden" ng-model="newpo.requisitionid" class="control">			
+		</div>
+		<div>
+			<span class="label">PO No</span>
+			<span class="control"><strong>{{newpo.ponumber | length : '3'}}</strong></span>
+		</div>
+		<div>
+			<span class="label">PO Date</span>
+			<datepicker date-format="dd-MM-yyyy">				
+		  		<input ng-model="newpo.date" type="text" class="control"/>
+			</datepicker>
+		</div>
+
+		<div>
+			<span class="label">PO Amount</span>
+			<input type="text" ng-model="newpo.amount" class="control">
+		</div>
+		
+		<div>
+			<span class="label">Description</span>
+			<textarea ng-model="newpo.description" class="control"></textarea>
+		</div>
+		<div ng-hide="isPOSaving">	      
+			<a class = "button-grashgreen" ng-click="savePO()" class="control"> Save </a>
+	    </div>
+	</form>
+</div>

@@ -11,6 +11,11 @@ body{
 	font-size: 14px;
 	color: $text-color
 }
+@media print {
+	.header .user, .nav-bar, .button-group{		
+		display: none;
+	}	
+}
 .header{
 	height: 40px;
 	border-bottom: 1px solid $border-color;
@@ -83,7 +88,7 @@ body{
 	margin-top: 15px;
 }
 .bar{
-	width: 0px;
+	min-width: 2px;
 	height: 20px;
 	margin-right: 10px;
 	display: inline-block;
@@ -305,5 +310,82 @@ $input: 13.39%;
 textarea{
 	min-height: 60px;
 	resize: none;
+	font-family: sans-serif;
 }
 
+table {
+	font-size: 90%;
+	width: 100%;
+	thead{
+		background-color: #29394a;
+		color: #fff;
+		tr td{
+			border-top: 1px solid #9c9c9c;
+			border-bottom: 1px solid #9c9c9c;
+			text-align: right;
+			&:first-child{
+				text-align: left;
+			}
+		}
+	}
+	tr{
+		td{
+			padding: 8px;
+			padding-right: 16px;
+			text-align: right;
+			border-right: 1px solid #9c9c9c;
+			&:first-child{
+				text-align: left;
+				border-left: 1px solid #9c9c9c;
+			}			
+		}		
+	}
+	tbody{
+		tr:last-child td{
+			border-top: 1px solid #9c9c9c;
+			border-bottom: 1px solid #9c9c9c;
+		}
+		tr:nth-child(odd){
+			background: #ddd;
+		}
+	}	
+}
+
+[tooltip]::after{
+	content: attr(tooltip);
+	visibility: hidden;
+	background: #c9c7c9;
+	padding: 4px;
+	border-radius: 2px;
+	color: #898d92;	
+	display: inline-block;
+    margin-left: 10px;    
+}
+[tooltip]:hover{
+	cursor: pointer;
+	&::after{
+		visibility: visible;
+	}
+}
+
+form.dialog-form {
+	overflow: hidden;
+	.label{
+		display: inline-block;
+		min-width: 125px;
+		vertical-align: top;
+	}
+	.control{
+		width: 250px;
+	}
+	> div{
+		padding: 5px;
+	}
+	.button-grashgreen{
+		padding: 5px;
+		margin: 0px;
+	}
+}
+datepicker{
+	float: none;
+}
