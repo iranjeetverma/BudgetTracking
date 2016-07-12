@@ -10,6 +10,7 @@ angular.module('budgetTrackingApp')
     		return $http.put(entribServices.headURL + '/' + head_id + entribServices.queryParams, data)
     	},
         saveHead: function(data){
+            data.siteName = "abc"
             return $http.post(entribServices.headURL  + entribServices.queryParams, data)
         }
     }

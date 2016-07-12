@@ -390,9 +390,10 @@ table.requisition-form{
 		visibility: visible;
 	}
 }
-
-form.dialog-form {
-	overflow: hidden;
+._720kb-datepicker-calendar{
+	left: 0px;
+}
+form.dialog-form {	
 	.label{
 		display: inline-block;
 		min-width: 125px;
