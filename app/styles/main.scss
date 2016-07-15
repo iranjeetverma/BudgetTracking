@@ -185,6 +185,8 @@ body{
 		}
 	}.selector{
 		cursor: pointer;
+		padding-left: 15px;
+    	text-align: left;
 	}
 }
 .Requisition-container{
@@ -193,7 +195,7 @@ body{
 }
 .requisitiondetalis-tile{
 	border: 1px solid #ddd;
-  display: flex;
+	display: flex;
 }
 .requisitiondetalis-tile div:nth-of-type(1) {flex-grow: 1;}
 .requisitiondetalis-tile div:nth-of-type(2) {flex-grow: 1;}
@@ -244,23 +246,34 @@ body{
 	text-align: center;
 	background: #c9c7c9;
 	.title{
-		flex: .85;
+		flex: 1;
 		font-size: 15px;
+		text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
 	}
-	.newhead{
-	  flex: .15;
+	.newhead{	 
 		color: #9b826e;
+		margin-top: -25px;
+	    float: right;
+	    margin-right: 50px;
 	}
 	.division-name{
-		flex: .25;
+		flex: .4;
 		text-align: left;
+		text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
 	}
 	.budget-name{
-		flex: .65;
+		flex: .4;
 		text-align: left;
+		text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
 	}
 	.date{
-		flex: .15;
+		flex: .2;
 	}
 }
 $col-size: 20%;
@@ -356,6 +369,7 @@ table.requisition-form{
 	margin-top: 30px;
 	margin-bottom: 30px;
 	color: #333;
+	font-size: 11.5px;
 	tr:first-child td{
 		padding: 20px;
 		border: 1px solid #ddd;
@@ -366,7 +380,7 @@ table.requisition-form{
 		border-top: none;
 		border-right: none; 
 		text-align: center;		
-		width: 15%;
+		width: calc(100%/7);
 	}
 	tr td:last-child{
 		padding: 10px;

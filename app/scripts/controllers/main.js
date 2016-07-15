@@ -54,7 +54,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
       }
       $scope.createHead = function(){
          $scope.newhead = {            
-            shopid: $scope.shop._id            
+            shopid: $scope.shop._id
         }
         $scope.createHeadDialog = ngDialog.open({ 
           template: '../../views/createHead.html', 
@@ -63,17 +63,26 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         });
       }
        $scope.saveHead = function(){
-        $scope.isHeadSaving = true
+        $scope.isHeadSaving = true              
         HeadService.saveHead($scope.newhead).success(function(){
-           $scope.isHeadSaving = false
-           ngDialog.close( $scope.createHeadDialog)  
+           $scope.isHeadSaving = false          
+           loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+           ngDialog.close( $scope.createHeadDialog)
         })
       }
       $scope.groupBudget = function(){
+        $scope.totalBudget =0;
+        $scope.totalAmendedBudget = 0;
+        $scope.totalUtilizedBudget = 0;
+        for(var i=0; i< $rootScope.shops.length; i++){
+          $scope.totalBudget = parseFloat($scope.totalBudget) + parseFloat($rootScope.shops[i].shopbudget)
+          $scope.totalAmendedBudget = parseFloat($scope.totalAmendedBudget) + parseFloat($rootScope.shops[i].amendedbudget)
+          $scope.totalUtilizedBudget = parseFloat($scope.totalUtilizedBudget) + parseFloat($rootScope.shops[i].utilizedbudget)
+        }
         ngDialog.open({ 
           template: '../../views/groupBudget.html', 
           className: 'ngdialog-theme-default',
-          controller: 'ShopCtrl',
+          scope: $scope,
           width: '60%'
         });
       }
@@ -93,7 +102,8 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         $scope.isPOSaving = true
         POService.savePO($scope.newpo).success(function(){
            $scope.isPOSaving = false
-          ngDialog.close( $scope.createPoDialog)  
+           loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+           ngDialog.close( $scope.createPoDialog)  
         })
       }
 }])
@@ -135,7 +145,6 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
                     $scope.po = poData.results
                     for(var k = 0; k< $scope.requisitions.length; k++){
                       $scope.requisitions[k].po = [];
-                      $scope.requisitions[k].amount = 0;
                       for(var l = 0; l< $scope.po.length; l++){
                         if($scope.requisitions[k]._id == $scope.po[l].requsitionid){
                           $scope.requisitions[k].po.push($scope.po[l])

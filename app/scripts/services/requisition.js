@@ -8,6 +8,10 @@ angular.module('budgetTrackingApp')
     	},
     	updateRequitision: function (requisition_id, data) {
     		return $http.put(entribServices.requisitionURL + '/' + requisition_id + entribServices.queryParams, data)
-    	}
+    	},
+        saveRequitision: function(data){
+            data.siteName = "abc"
+            return $http.post(entribServices.requisitionURL+ entribServices.queryParams, data)
+        }
     }
   }]);
