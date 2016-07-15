@@ -8,14 +8,16 @@
  * Controller of the budgetTrackingApp
  */
 
-
 angular.module('budgetTrackingApp').controller('MainCtrl', 
-  ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 
-    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog) {
+  ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 'YearService', 
+    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService) {
       $rootScope.$on('shopselected', function(e, shop){
         $scope.shop = shop
         if(!$scope.heads){
-          loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+          YearService.getYear().success(function(yearData){
+            $rootScope.startoftheyear = yearData.results[0].startoftheyear;
+            loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+          })          
         }else{
           generateGraph($scope, $rootScope)
         }
@@ -136,7 +138,11 @@ function generateGraph($scope, $rootScope){
 function loadShopData($scope, $rootScope, HeadService, RequisitionService, POService){
   HeadService.getHeads().success(function(headData){
     if(headData && headData.results){
-        $scope.heads = headData.results      
+        $scope.heads = headData.results.filter(function(head){          
+          var headDate = moment(head.createdTimestamp, 'DD-MM-YYYY')          
+          var headYear = headDate.year()
+          return (headDate.month()+1) >= $rootScope.startoftheyear && head.year == headYear ? head : (headDate.month()+1) < $rootScope.startoftheyear && head.year+1 == headYear ? head : "" 
+        })     
         RequisitionService.getRequitisions().success(function(reqData){
           if(reqData && reqData.results){
               $scope.requisitions = reqData.results
