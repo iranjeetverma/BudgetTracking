@@ -12,6 +12,7 @@ angular.module('budgetTrackingApp')
         saveHead: function(data){
             data.newhead = 'true'
             data.siteName = "abc"
+            data.year = moment().year()
             return $http.post(entribServices.headURL  + entribServices.queryParams, data)
         }
     }

@@ -65,12 +65,14 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         });
       }
        $scope.saveHead = function(){
-        $scope.isHeadSaving = true              
-        HeadService.saveHead($scope.newhead).success(function(){
-           $scope.isHeadSaving = false          
-           loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
-           ngDialog.close( $scope.createHeadDialog)
-        })
+        if($scope.newhead.headname && $scope.newhead.budget && $scope.newhead.headcode && $scope.newhead.remarks){
+          $scope.isHeadSaving = true              
+          HeadService.saveHead($scope.newhead).success(function(){
+             $scope.isHeadSaving = false          
+             loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+             ngDialog.close( $scope.createHeadDialog)
+          })
+        }
       }
       $scope.groupBudget = function(){
         $scope.totalBudget =0;
@@ -88,11 +90,32 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           width: '60%'
         });
       }
+      $rootScope.getCurrentFinYear = function(){
+        if($rootScope.startoftheyear <= moment().month()+1){
+          if($rootScope.startoftheyear == 1){
+            return moment().year();
+          }
+          return (moment().year()+'').substring(2) + (parseInt((moment().year()+'').substring(2))+1)
+        }else{
+          return (parseInt((moment().year()+'').substring(2))-1) + (moment().year()+'').substring(2)
+        }
+      }
       $scope.createPo = function(requisition){
+        var nextPO = "001";
+        if($scope.po){
+            $scope.po.sort(function(p1, p2){
+                return parseInt(p1.ponumber.split('/')[2]) < parseInt(p2.ponumber.split('/')[2]) ? -1 : 1;
+            })
+            nextPO = (parseInt($scope.po[$scope.po.length -1].ponumber.split('/')[2]) + 1) +'';
+            while(nextPO.length < 3){
+              nextPO = '0'+nextPO;
+            }
+
+        }        
         $scope.newpo = {            
             requsitionid: requisition._id,
-            ponumber: $scope.po.length > 0 ? $scope.po[$scope.po.length-1].ponumber? $scope.po[$scope.po.length-1].ponumber+ 1 :1 : 1,
-            date: (new Date()).getDate() +'-'+ (new Date()).getMonth() +'-'+ (new Date()).getFullYear()
+            ponumber: "PO/"+$rootScope.getCurrentFinYear()+"/"+nextPO,
+            date: (new Date()).getDate() +'-'+ ((new Date()).getMonth()+1) +'-'+ (new Date()).getFullYear()
         }
         $scope.createPoDialog = ngDialog.open({ 
           template: '../../views/createPO.html', 
@@ -101,12 +124,14 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         });
       }
       $scope.savePO = function(){
-        $scope.isPOSaving = true
-        POService.savePO($scope.newpo).success(function(){
-           $scope.isPOSaving = false
-           loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
-           ngDialog.close( $scope.createPoDialog)  
-        })
+        if($scope.newpo.ponumber && $scope.newpo.date && $scope.newpo.amount && $scope.newpo.description){
+          $scope.isPOSaving = true
+          POService.savePO($scope.newpo).success(function(){
+             $scope.isPOSaving = false
+             loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+             ngDialog.close( $scope.createPoDialog)  
+          })
+        }
       }
 }])
 
@@ -142,7 +167,7 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
           var headDate = moment(head.createdTimestamp, 'DD-MM-YYYY')          
           var headYear = headDate.year()
           return (headDate.month()+1) >= $rootScope.startoftheyear && head.year == headYear ? head : (headDate.month()+1) < $rootScope.startoftheyear && head.year+1 == headYear ? head : "" 
-        })     
+        })
         RequisitionService.getRequitisions().success(function(reqData){
           if(reqData && reqData.results){
               $scope.requisitions = reqData.results
@@ -177,8 +202,9 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
                   generateGraph($scope, $rootScope) 
                 })              
             }
+            $rootScope.requisitions = $scope.requisitions;
         })
-        $rootScope.heads = $scope.heads;
+        $rootScope.heads = $scope.heads;        
       }      
   })
 }

@@ -8,7 +8,8 @@
  * Controller of the budgetTrackingApp
  */
 angular.module('budgetTrackingApp')
-.controller('ShopCtrl', ['$scope', '$rootScope', 'ShopService', '$location', function ($scope, $rootScope, ShopService, $location) {
+.controller('ShopCtrl', ['$scope', '$rootScope', 'ShopService', '$location', 
+	function ($scope, $rootScope, ShopService, $location) {
 	$scope.getShops = function(){
 		ShopService.getShops().success(function(shopData){
 			if(shopData && shopData.results){				

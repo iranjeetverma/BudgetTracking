@@ -14,7 +14,7 @@
     <div class="form-row">
         <div class="form-cols-1">Requisition Number:</div>
         <div class="form-cols-1">
-          {{selectedShopForNav.division}}/{{selectedShopForNav.shotname}}/{{activeHead.year}}/001
+          {{requisitionnumberprefix}}/{{newrequisition.requisitionnumber | length : "3"}}
         </div>
         <div class="form-cols-2">Shop: <strong>{{newrequisition.shopname}}</strong></div> 
         <div class="form-cols-1">Cell:
@@ -177,17 +177,41 @@
         </div>
         <div class = "form-row">
           <div class = "form-cols-1">Budget Consumed:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q1:</span>Rs:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q2:</span>Rs:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q3:</span>Rs:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q4:</span>Rs:</div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q1:</span>
+            <span>{{quarters[0] | currency : "Rs. "}}</span>
+          </div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q2:</span>
+            <span>{{quarters[1] | currency : "Rs. "}}</span>
+          </div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q3:</span>
+            <span>{{quarters[2] | currency : "Rs. "}}</span>
+          </div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q4:</span>
+            <span>{{quarters[3] | currency : "Rs. "}}</span>
+          </div>          
         </div>
         <div class = "form-row">
           <div class = "form-cols-1">Balance Budget:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q1:</span>Rs:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q2:</span>Rs:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q3:</span>Rs:</div>
-          <div class = "form-cols-1"><span class="Q-color">Q4:</span>Rs:</div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q1:</span>
+            <span>{{selectedShopForNav.shopbudget/4 - quarters[0] | currency : "Rs. "}}</span>
+          </div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q2:</span>
+            <span>{{selectedShopForNav.shopbudget/4 - quarters[1] | currency : "Rs. "}}</span>
+          </div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q3:</span>
+            <span>{{selectedShopForNav.shopbudget/4 - quarters[2] | currency : "Rs. "}}</span>
+          </div>
+          <div class = "form-cols-1">
+            <span class="Q-color">Q4:</span>
+            <span>{{selectedShopForNav.shopbudget/4 - quarters[3] | currency : "Rs. "}}</span>
+          </div>
         </div>
         <div class = "form-row">
           <div class = "form-cols-1">Remark:</div>
