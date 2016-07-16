@@ -17,7 +17,7 @@
 
 		<div>
 			<span class="label">PO Amount</span>
-			<input type="text" ng-model="newpo.amount" class="control">
+			<input type="number" ng-model="newpo.amount" class="control">			
 		</div>
 		
 		<div>
@@ -25,7 +25,10 @@
 			<textarea ng-model="newpo.description" class="control"></textarea>
 		</div>
 		<div ng-hide="isPOSaving" style="overflow: hidden;">	      
-			<a class = "button-grashgreen" ng-click="savePO()" class="control"> Save </a>
+			<a class = "button-grashgreen" ng-click="savePO()" class="control" ng-hide="requisitionPOAmount + newpo.amount > currentRequisition.amount"> Save </a>
 	    </div>
+	    <div ng-show="requisitionPOAmount + newpo.amount > currentRequisition.amount" class="error">
+			PO amount can not be greater than {{(currentRequisition.amount - requisitionPOAmount) | currency : "Rs. "}}
+			</div>
 	</form>
 </div>

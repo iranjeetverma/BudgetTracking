@@ -135,13 +135,13 @@
             <div class = "form-cols-2 bold">PO Released:</div>
         </div>
         <div class = "form-row" style="font-weight:600;">
-            <div class = "form-cols-1">PO No.</div>
+            <div class = "form-cols-2">PO No.</div>
             <div class = "form-cols-2">Date</div>
             <div class = "form-cols-1">Amount</div>
         </div>
         <div ng-repeat="requi in activeHead.requisitions">
           <div class = "form-row" ng-repeat="po in requi.po">
-            <div class = "form-cols-1">{{po.ponumber}}</div>
+            <div class = "form-cols-2">{{po.ponumber}}</div>
             <div class = "form-cols-2">{{po.date.split(':')[0]}}</div>
             <div class = "form-cols-1">{{po.amount | currency: "Rs. "}}</div>
           </div>

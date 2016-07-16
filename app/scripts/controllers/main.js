@@ -106,17 +106,21 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         }
       }
       $scope.createPo = function(requisition){
-        var nextPO = "001";
+        var nextPO = 1;
         if($scope.po){
             $scope.po.sort(function(p1, p2){
-                return parseInt(p1.ponumber.split('/')[2]) < parseInt(p2.ponumber.split('/')[2]) ? -1 : 1;
+                return parseInt(_.last(p1.ponumber.split('/'))) < parseInt(_.last(p2.ponumber.split('/'))) ? -1 : 1;
             })
-            nextPO = (parseInt($scope.po[$scope.po.length -1].ponumber.split('/')[2]) + 1) +'';
-            while(nextPO.length < 3){
-              nextPO = '0'+nextPO;
-            }
-
-        }        
+            nextPO = (parseInt(_.last(_.last($scope.po).ponumber.split('/'))) + 1) +'';
+        }
+        while((nextPO+'').length < 3){
+          nextPO = '0'+nextPO;
+        }
+        $scope.requisitionPOAmount = 0;
+        requisition.po.forEach(function(po){
+          $scope.requisitionPOAmount += po.amount;
+        })
+        $scope.currentRequisition = requisition
         $scope.newpo = {            
             requsitionid: requisition._id,
             ponumber: "PO/"+$rootScope.getCurrentFinYear()+"/"+nextPO,
