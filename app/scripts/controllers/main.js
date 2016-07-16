@@ -107,7 +107,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
       }
       $scope.createPo = function(requisition){
         var nextPO = 1;
-        if($scope.po){
+        if($scope.po && $scope.po.length > 0){
             $scope.po.sort(function(p1, p2){
                 return parseInt(_.last(p1.ponumber.split('/'))) < parseInt(_.last(p2.ponumber.split('/'))) ? -1 : 1;
             })
