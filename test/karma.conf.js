@@ -27,6 +27,7 @@ module.exports = function(config) {
       'bower_components/ng-dialog/js/ngDialog.js',
       'bower_components/angularjs-datepicker/dist/angular-datepicker.min.js',
       'bower_components/moment/moment.js',
+      'bower_components/underscore/underscore.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

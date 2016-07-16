@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('budgetTrackingApp')
-.controller('RequisitionCtrl', ['$scope', '$rootScope', 'RequisitionService', '$location', '$route',
-	function ($scope, $rootScope, RequisitionService, $location, $route) {
-    $scope.today = new Date()    
+.controller('RequisitionCtrl', ['$scope', '$rootScope', 'RequisitionService', '$location', 'ngDialog', 
+	function ($scope, $rootScope, RequisitionService, $location, ngDialog) {
+    if(!$scope.selectedShopForNav){
+        $location.path( 'home' );
+    }
+    $scope.today = new Date()  
     $scope.activeHead = $rootScope.activeHead
     $scope.selectedShopForNav = $rootScope.selectedShopForNav
     $scope.categories = ['Productivity', 'Quality', 'Cost', 'Delivery', 'SHE', 'Replacement', 'Reconditioning', 'New Model', 'Introduction', 'Others']
@@ -22,7 +25,7 @@ angular.module('budgetTrackingApp')
                             sum += 3;
                             q++;
                         }    
-                        $scope.quarters[q-1] += req.amount;
+                        $scope.quarters[q-1] += parseInt(req.amount);
                     })
                 }
             }
@@ -36,10 +39,13 @@ angular.module('budgetTrackingApp')
         var nextReqNo = 1;        
         if($rootScope.requisitions && $rootScope.requisitions.length > 0){            
             $rootScope.requisitions.sort(function(r1, r2){
-                return r1.requisitionnumber < r2.requisitionnumber ? -1 : 1
-            })            
-            nextReqNo = $rootScope.requisitions[$rootScope.requisitions.length -1].requisitionnumber + 1            
-        }        
+                return parseInt(_.last(r1.requisitionnumber.split('/'))) < parseInt(_.last(r2.requisitionnumber.split('/'))) ? -1 : 1
+            })
+            nextReqNo = (parseInt(_.last(_.last($rootScope.requisitions).requisitionnumber.split('/'))) + 1) +'';            
+            while(nextReqNo.length < 3){
+              nextReqNo = '0'+nextReqNo;
+            }
+        }
         return nextReqNo;
     } 
 
@@ -47,7 +53,7 @@ angular.module('budgetTrackingApp')
         headid: $scope.activeHead._id,
         category: $scope.categories[0],
         shopname: $scope.selectedShopForNav.shopname,
-        requisitionnumber: $scope.getNextRequisitionNumber(),
+        requisitionnumber: $scope.requisitionnumberprefix +"/"+$scope.getNextRequisitionNumber(),
         suppliers: []
     }
 
@@ -64,9 +70,27 @@ angular.module('budgetTrackingApp')
 	    if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier3){
 	    	$scope.newrequisition.amount = $scope.newrequisition.negotiatedcost3
 	    }
-    	RequisitionService.saveRequitision($scope.newrequisition).success(function(){
-            $location.path( 'home' );
-            $route.reload();
-        })
+        if($scope.newrequisition.supplier1 && $scope.newrequisition.supplier2 &&
+           $scope.newrequisition.quotedcost1 && $scope.newrequisition.quotedcost2 &&
+           $scope.newrequisition.negotiatedcost1 && $scope.newrequisition.negotiatedcost2 &&
+           $scope.newrequisition.selectedsupplier && $scope.newrequisition.reasonsuppliersection &&
+           $scope.newrequisition.justification && $scope.newrequisition.categorydetails &&
+           $scope.newrequisition.category && $scope.newrequisition.qty &&
+           $scope.newrequisition.description && $scope.newrequisition.cell){
+        	RequisitionService.saveRequitision($scope.newrequisition).success(function(){
+                $rootScope.heads.forEach(function(head){
+                    if(head._id == $scope.newrequisition.headid){
+                        $scope.newrequisition.createdTimestamp = moment().date() + '-'+ (moment().month()+1) + '-'+ moment().year()
+                        head.requisitions.push($scope.newrequisition)
+                    }
+                })
+                $location.path( 'home' );
+            })
+        }else{
+            ngDialog.open({ 
+                template: '<p class="no-data">Please fill all the required details</p>',
+                plain: true
+            });
+        }
     }  
 }]);

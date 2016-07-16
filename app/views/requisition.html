@@ -14,7 +14,7 @@
     <div class="form-row">
         <div class="form-cols-1">Requisition Number:</div>
         <div class="form-cols-1">
-          {{requisitionnumberprefix}}/{{newrequisition.requisitionnumber | length : "3"}}
+          {{newrequisition.requisitionnumber}}
         </div>
         <div class="form-cols-2">Shop: <strong>{{newrequisition.shopname}}</strong></div> 
         <div class="form-cols-1">Cell:
@@ -33,7 +33,7 @@
     <div class = "form-row">
       <div class = "form-cols-1 ">Category:</div>
       <div class = "form-cols-1">
-        <select class = "input-6" style = "margin-left: 4px;"
+        <select class = "input-6"
           ng-options="category as category for category in categories"
           ng-model="newrequisition.category"></select>
       </div>
@@ -100,14 +100,14 @@
     <div class = "form-row">
       <div class = "form-cols-1">Budget</div>
       <div class = "form-cols-3">
-        Fixed Cost Budget {{selectedShopForNav.shortname}}
+        <strong>Fixed Cost Budget {{selectedShopForNav.shortname}}</strong>
       </div>
     </div>
   </div>
   <div class = "container">
     <div class = "form-row">
       <div class = "form-cols-1">Shop Description</div>
-      <div class = "form-cols-3">{{selectedShopForNav.shopname}}</div>
+      <div class = "form-cols-3"><strong>{{selectedShopForNav.shopname}}</strong></div>
     </div>
   </div>
   <div class = "container">

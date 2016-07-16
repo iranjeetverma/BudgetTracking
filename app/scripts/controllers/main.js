@@ -10,7 +10,7 @@
 
 angular.module('budgetTrackingApp').controller('MainCtrl', 
   ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 'YearService', 
-    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService) {
+    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService) {      
       $rootScope.$on('shopselected', function(e, shop){
         $scope.shop = shop
         if(!$scope.heads){
@@ -72,6 +72,11 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
              loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
              ngDialog.close( $scope.createHeadDialog)
           })
+        }else{
+            ngDialog.open({ 
+                template: '<p class="no-data">Please fill all the required details</p>',
+                plain: true
+            });
         }
       }
       $scope.groupBudget = function(){
@@ -131,6 +136,11 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
              loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
              ngDialog.close( $scope.createPoDialog)  
           })
+        }else{
+            ngDialog.open({ 
+                template: '<p class="no-data">Please fill all the required details</p>',
+                plain: true
+            });
         }
       }
 }])
@@ -204,8 +214,8 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
             }
             $rootScope.requisitions = $scope.requisitions;
         })
-        $rootScope.heads = $scope.heads;        
-      }      
+        $rootScope.heads = $scope.heads;           
+      }     
   })
 }
 function calcShopBudgets($scope, $rootScope){
