@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- build:css(.tmp) styles/main.css -->    
+    <link rel="stylesheet" href="styles/font-awesome.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
   <body ng-app="budgetTrackingApp">
-    <div ng-include="'views/header.html'"></div>
-    <div ng-include="'views/side-nav.html'" class="nav-bar"></div>
+    <div ng-include="'header.html'"></div>
+    <div ng-include="'side-nav.html'" class="nav-bar"></div>
     <div id="main">
         <ng-view></ng-view>
     </div>

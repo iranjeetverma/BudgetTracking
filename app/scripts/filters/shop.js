@@ -1,3 +1,4 @@
+'use strict';
 angular.module('budgetTrackingApp').filter('shop', function(){
 	return function(input, params){		
 		var filtered = [];

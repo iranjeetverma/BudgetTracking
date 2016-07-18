@@ -59,7 +59,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
             shopid: $scope.shop._id
         }
         $scope.createHeadDialog = ngDialog.open({ 
-          template: '../../views/createHead.html', 
+          template: '../../createHead.html', 
           className: 'ngdialog-theme-default',
           scope: $scope
         });
@@ -89,7 +89,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           $scope.totalUtilizedBudget = parseFloat($scope.totalUtilizedBudget) + parseFloat($rootScope.shops[i].utilizedbudget)
         }
         ngDialog.open({ 
-          template: '../../views/groupBudget.html', 
+          template: '../../groupBudget.html', 
           className: 'ngdialog-theme-default',
           scope: $scope,
           width: '60%'
@@ -127,7 +127,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
             date: (new Date()).getDate() +'-'+ ((new Date()).getMonth()+1) +'-'+ (new Date()).getFullYear()
         }
         $scope.createPoDialog = ngDialog.open({ 
-          template: '../../views/createPO.html', 
+          template: '../../createPO.html', 
           className: 'ngdialog-theme-default',
           scope: $scope
         });

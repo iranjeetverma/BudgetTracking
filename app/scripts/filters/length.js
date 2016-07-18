@@ -1,3 +1,4 @@
+'use strict';
 angular.module('budgetTrackingApp').filter('length', function(){
 	return function(value, params){
 		params = parseInt(params)
