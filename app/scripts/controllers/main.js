@@ -159,14 +159,13 @@ function generateGraph($scope, $rootScope){
     ]
     var highest = $scope.budgets[0].amount
     
-    if($scope.budgets[0].amount > $scope.budgets[1].amount && $scope.budgets[0].amount > $scope.budgets[2].amount){
+    if($scope.budgets[0].amount >= $scope.budgets[1].amount && $scope.budgets[0].amount >= $scope.budgets[2].amount){
       highest = $scope.budgets[0].amount
-    }else if($scope.budgets[1].amount > $scope.budgets[0].amount && $scope.budgets[1].amount > $scope.budgets[2].amount){
+    }else if($scope.budgets[1].amount >= $scope.budgets[0].amount && $scope.budgets[1].amount >= $scope.budgets[2].amount){
       highest = $scope.budgets[1].amount
     } else {
       highest = $scope.budgets[2].amount
     }
-    
     $scope.budgets[0].width = (graphMaxWidth/highest) * $scope.budgets[0].amount
     $scope.budgets[1].width = (graphMaxWidth/highest) * $scope.budgets[1].amount
     $scope.budgets[2].width = (graphMaxWidth/highest) * $scope.budgets[2].amount
