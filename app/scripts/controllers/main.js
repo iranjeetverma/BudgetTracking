@@ -59,7 +59,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
             shopid: $scope.shop._id
         }
         $scope.createHeadDialog = ngDialog.open({ 
-          template: '../../createHead.html', 
+          template: 'createHead.html', 
           className: 'ngdialog-theme-default',
           scope: $scope
         });
@@ -89,7 +89,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           $scope.totalUtilizedBudget = parseFloat($scope.totalUtilizedBudget) + parseFloat($rootScope.shops[i].utilizedbudget)
         }
         ngDialog.open({ 
-          template: '../../groupBudget.html', 
+          template: 'groupBudget.html', 
           className: 'ngdialog-theme-default',
           scope: $scope,
           width: '60%'
@@ -127,7 +127,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
             date: (new Date()).getDate() +'-'+ ((new Date()).getMonth()+1) +'-'+ (new Date()).getFullYear()
         }
         $scope.createPoDialog = ngDialog.open({ 
-          template: '../../createPO.html', 
+          template: 'createPO.html', 
           className: 'ngdialog-theme-default',
           scope: $scope
         });
@@ -159,9 +159,9 @@ function generateGraph($scope, $rootScope){
     ]
     var highest = $scope.budgets[0].amount
     
-    if($scope.budgets[0].amount > $scope.budgets[1].amount && $scope.budgets[0].amount > $scope.budgets[2].amount){
+    if($scope.budgets[0].amount >= $scope.budgets[1].amount && $scope.budgets[0].amount >= $scope.budgets[2].amount){
       highest = $scope.budgets[0].amount
-    }else if($scope.budgets[1].amount > $scope.budgets[0].amount && $scope.budgets[1].amount > $scope.budgets[2].amount){
+    }else if($scope.budgets[1].amount >= $scope.budgets[0].amount && $scope.budgets[1].amount >= $scope.budgets[2].amount){
       highest = $scope.budgets[1].amount
     } else {
       highest = $scope.budgets[2].amount

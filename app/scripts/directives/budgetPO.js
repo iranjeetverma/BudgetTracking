@@ -3,6 +3,6 @@ angular.module('budgetTrackingApp')
 .directive('budgetPo', function(){
 	return {
 		restrict: 'E',
-		templateUrl: '../../budgetPOTemplate.html'
+		templateUrl: 'budgetPOTemplate.html'
 	}
 })
