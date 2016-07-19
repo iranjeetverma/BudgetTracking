@@ -437,3 +437,6 @@ datepicker{
 .error{
 	color: red;
 }
+input:invalid {
+    border: 2px solid #DD2C00;
+}

@@ -11,13 +11,13 @@
 		<div>
 			<span class="label">PO Date</span>
 			<datepicker date-format="dd-MM-yyyy">				
-		  		<input ng-model="newpo.date" type="text" class="control"/>
+		  		<input ng-model="newpo.date" type="text" class="control" readonly/>
 			</datepicker>
 		</div>
 
 		<div>
 			<span class="label">PO Amount</span>
-			<input type="number" ng-model="newpo.amount" class="control">			
+			<input type="number" ng-model="newpo.amount" class="control" min="0">			
 		</div>
 		
 		<div>

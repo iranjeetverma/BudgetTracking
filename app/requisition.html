@@ -27,7 +27,7 @@
           <textarea type ="text" class = "input-7" ng-model="newrequisition.description"></textarea>
         </div>
         <div class="form-cols-1">Qty:
-          <input type="text" class="input-2" ng-model="newrequisition.qty">
+          <input type="number" min="0" class="input-2" ng-model="newrequisition.qty">
         </div>
     </div>
     <div class = "form-row">
@@ -62,25 +62,25 @@
     <div class = "form-row">
       <div class = "form-cols-1">Quoted Cost:</div>
       <div class = "form-cols-1">
-        <input type = "text"  class = "input-6" ng-model="newrequisition.quotedcost1">
+        <input type = "number" min="0"  class = "input-6" ng-model="newrequisition.quotedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type = "text"  class = "input-6" ng-model="newrequisition.quotedcost2">
+        <input type = "number" min="0" class = "input-6" ng-model="newrequisition.quotedcost2">
       </div>
       <div class = "form-cols-1">
-        <input type = "text"  class = "input-6" ng-model="newrequisition.quotedcost3">
+        <input type = "number" min="0"  class = "input-6" ng-model="newrequisition.quotedcost3">
       </div>
     </div>
     <div class = "form-row">
       <div class = "form-cols-1">Negotiated Cost:</div>
       <div class = "form-cols-1">
-        <input type = "text"  class = "input-6" ng-model="newrequisition.negotiatedcost1">
+        <input type="number" min="0"  class = "input-6" ng-model="newrequisition.negotiatedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type = "text"  class = "input-6" ng-model="newrequisition.negotiatedcost2">
+        <input type="number" min="0"  class = "input-6" ng-model="newrequisition.negotiatedcost2">
       </div>
       <div class = "form-cols-1">
-        <input type = "text"  class = "input-6" ng-model="newrequisition.negotiatedcost3">
+        <input type="number" min="0" class = "input-6" ng-model="newrequisition.negotiatedcost3">
       </div>
     </div>
     <div class = "form-row">
