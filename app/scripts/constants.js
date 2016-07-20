@@ -6,5 +6,5 @@ app.constant('entribServices', {
 	headURL: 'http://jira.entrib.com/server/elements/head/records',
 	requisitionURL: 'http://jira.entrib.com/server/elements/requisition/records',
 	poURL: 'http://jira.entrib.com/server/elements/po/records',
-	yearURL: 'http://jira.entrib.com/server/elements/financialyear/records',
+	yearURL: 'http://jira.entrib.com/server/elements/financialyear/records'
 });

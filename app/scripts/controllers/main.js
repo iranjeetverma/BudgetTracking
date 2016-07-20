@@ -10,7 +10,13 @@
 
 angular.module('budgetTrackingApp').controller('MainCtrl', 
   ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 'YearService', 
-    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService) {      
+    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService) {
+      $rootScope.checkNumber = function(number) {
+        if(number == undefined || number == null || number <0){
+          return false;
+        }
+        return true;
+      }
       $rootScope.$on('shopselected', function(e, shop){
         $scope.shop = shop
         if(!$scope.heads){
@@ -23,14 +29,11 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         }
       })
 
-      $scope.updateBudgetHead = function(keyCode, head){
-        if(head.amendedbudget == ""){
-          head.amendedbudget = 0;
+      $scope.updateBudgetHead = function(keyCode, head){        
+        if(!head.amendedbudget){
+            head.amendedbudget = 0;
         }
-        if(head.amendedbudget && head.amendedbudget.slice(0,1) == "0"  && head.amendedbudget.length > 1){
-          head.amendedbudget = head.amendedbudget.slice(1,head.amendedbudget.length)
-        }
-        if(keyCode == 13){
+        if(keyCode == 13 && $rootScope.checkNumber(head.amendedbudget)){          
           head.isupdating = true
           HeadService.updateHead(head._id, {amendedbudget: head.amendedbudget}).success(function(){
             head.isupdating = false;
@@ -65,7 +68,10 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         });
       }
        $scope.saveHead = function(){
-        if($scope.newhead.headname && $scope.newhead.budget && $scope.newhead.headcode && $scope.newhead.remarks){
+        if($scope.newhead.headname && 
+          $rootScope.checkNumber($scope.newhead.budget) &&
+          $scope.newhead.headcode && 
+          $scope.newhead.remarks){
           $scope.isHeadSaving = true              
           HeadService.saveHead($scope.newhead).success(function(){
              $scope.isHeadSaving = false          
@@ -74,7 +80,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           })
         }else{
             ngDialog.open({ 
-                template: '<p class="no-data">Please fill all the required details</p>',
+                template: '<p class="no-data">All fields are Mandatory to create a new head</p>',
                 plain: true
             });
         }
@@ -117,6 +123,9 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           nextPO = '0'+nextPO;
         }
         $scope.requisitionPOAmount = 0;
+        if(!requisition.po){
+          requisition.po = []
+        }
         requisition.po.forEach(function(po){
           $scope.requisitionPOAmount += po.amount;
         })
@@ -133,7 +142,10 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         });
       }
       $scope.savePO = function(){
-        if($scope.newpo.ponumber && $scope.newpo.date && $scope.newpo.amount && $scope.newpo.description){
+        if($scope.newpo.ponumber && 
+          $scope.newpo.date && 
+          $rootScope.checkNumber($scope.newpo.amount) &&
+          $scope.newpo.description){
           $scope.isPOSaving = true
           POService.savePO($scope.newpo).success(function(){
              $scope.isPOSaving = false
@@ -142,7 +154,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           })
         }else{
             ngDialog.open({ 
-                template: '<p class="no-data">Please fill all the required details</p>',
+                template: '<p class="no-data">All fields are Mandatory to create a new po</p>',
                 plain: true
             });
         }

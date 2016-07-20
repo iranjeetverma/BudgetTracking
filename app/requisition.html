@@ -27,7 +27,7 @@
           <textarea type ="text" class = "input-7" ng-model="newrequisition.description"></textarea>
         </div>
         <div class="form-cols-1">Qty:
-          <input type="number" min="0" class="input-2" ng-model="newrequisition.qty">
+          <input type="number" class="input-2" ng-model="newrequisition.qty">
         </div>
     </div>
     <div class = "form-row">
@@ -50,45 +50,47 @@
     <div class = "form-row">
       <div class = "form-cols-1">Quotation Received From:</div>
       <div class="form-cols-1">
-        <input type="text" class="input-6" ng-model="newrequisition.suppliers[0]">
+        <input type="text" placeholder="Supplier1" class="input-6" ng-model="newrequisition.supplier1" ng-change="supplierChange('Supplier1')">
       </div>
       <div class="form-cols-1">
-        <input type="text" class="input-6" ng-model="newrequisition.suppliers[1]">
+        <input type="text" placeholder="Supplier2" class="input-6" ng-model="newrequisition.supplier2" ng-change="supplierChange('Supplier2')">
       </div>
       <div class="form-cols-1">
-        <input type="text" class="input-6" ng-model="newrequisition.suppliers[2]">
+        <input type="text" placeholder="Supplier3" class="input-6" ng-model="newrequisition.supplier3" ng-change="supplierChange('Supplier3')">
       </div>
     </div>
     <div class = "form-row">
       <div class = "form-cols-1">Quoted Cost:</div>
       <div class = "form-cols-1">
-        <input type = "number" min="0"  class = "input-6" ng-model="newrequisition.quotedcost1">
+        <input type = "number" placeholder="Quoted Cost 1" class = "input-6" ng-model="newrequisition.quotedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type = "number" min="0" class = "input-6" ng-model="newrequisition.quotedcost2">
+        <input type = "number" placeholder="Quoted Cost 2"class = "input-6" ng-model="newrequisition.quotedcost2">
       </div>
       <div class = "form-cols-1">
-        <input type = "number" min="0"  class = "input-6" ng-model="newrequisition.quotedcost3">
+        <input type = "number" placeholder="Quoted Cost 3" class = "input-6" ng-model="newrequisition.quotedcost3">
       </div>
     </div>
     <div class = "form-row">
       <div class = "form-cols-1">Negotiated Cost:</div>
       <div class = "form-cols-1">
-        <input type="number" min="0"  class = "input-6" ng-model="newrequisition.negotiatedcost1">
+        <input type="number" placeholder="Negotiated Cost 1" class="input-6" ng-model="newrequisition.negotiatedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type="number" min="0"  class = "input-6" ng-model="newrequisition.negotiatedcost2">
+        <input type="number" placeholder="Negotiated Cost 2" class="input-6" ng-model="newrequisition.negotiatedcost2">
       </div>
       <div class = "form-cols-1">
-        <input type="number" min="0" class = "input-6" ng-model="newrequisition.negotiatedcost3">
+        <input type="number" placeholder="Negotiated Cost 3" class = "input-6" ng-model="newrequisition.negotiatedcost3">
       </div>
     </div>
     <div class = "form-row">
       <div class = "form-cols-1">Selected Supplier:</div>
       <div class = "form-cols-1 ">
         <select class = "input-6"
-          ng-options="supplier as supplier for supplier in newrequisition.suppliers"
-          ng-model="newrequisition.selectedsupplier"></select>
+          ng-options="supplier as supplier for supplier in suppliers"
+          ng-model="newrequisition.selectedsupplier">
+            <option style="display:none" value="">Select a Supplier</option>
+          </select>
       </div>      
       <div class = "form-cols-1">Reason For Selection:</div>
       <div class = "form-cols-1 ">
@@ -118,8 +120,8 @@
           <div class = "form-cols-3 bold">{{activeHead.headname}}</div>
         </div>
         <div class = "form-row">
-          <div class = "form-cols-2">Budget Allocated:</div>
-          <div class = "form-cols-2">{{activeHead.budget  | currency: "Rs. "}}</div>
+          <div class = "form-cols-2">Budget Allocated:</div>          
+          <div class = "form-cols-2">{{activeHead.budget  | currency: "Rs. "}}</div> 
         </div>
         <div class = "form-row">
           <div class = "form-cols-2">Budget Consumed:</div>
@@ -144,11 +146,11 @@
             <div class = "form-cols-2">{{po.ponumber}}</div>
             <div class = "form-cols-2">{{po.date.split(':')[0]}}</div>
             <div class = "form-cols-1">{{po.amount | currency: "Rs. "}}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   <div class = "container">
     <div class = "shop-budget-section">
       <div class ="shop-budget">

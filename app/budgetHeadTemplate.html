@@ -10,9 +10,9 @@
     </div>
     <div class = "tile">
       <div class='title-value'>
-        Rs. <input type="number" min="0" class="amBudget" ng-class="{disabled: head.isupdating}" ng-disabled="head.isupdating" ng-model="head.amendedbudget" ng-keyup="updateBudgetHead($event.keyCode, head)">
+        Rs. <input type="number"  class="amBudget" ng-class="{disabled: head.isupdating}" ng-disabled="head.isupdating" ng-model="head.amendedbudget" ng-keyup="updateBudgetHead($event.keyCode, head)">
       </div>
-      <span class='title-title'>Amanded Budget</span>
+      <span class='title-title'>Amended Budget</span>
     </div>
     <div class = "tile">
       <div class='title-value'>{{head.amountutilized | currency:"Rs. "}}</div>

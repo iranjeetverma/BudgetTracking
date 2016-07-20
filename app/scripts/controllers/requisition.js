@@ -48,35 +48,90 @@ angular.module('budgetTrackingApp')
         }
         return nextReqNo;
     } 
+    
+    $scope.supplierChange = function(supplier){
+        $scope.suppliers = []        
+        $scope.suppliers.push($scope.newrequisition.supplier1)
+        $scope.suppliers.push($scope.newrequisition.supplier2)
+        $scope.suppliers.push($scope.newrequisition.supplier3)
+        $scope.suppliers = $scope.suppliers.filter(function(supplier) {
+            if(supplier){
+                return true
+            }
+            return false
+        })
+        console.log($scope.suppliers)
+    }
 
     $scope.newrequisition = {
         headid: $scope.activeHead._id,
         category: $scope.categories[0],
         shopname: $scope.selectedShopForNav.shopname,
-        requisitionnumber: $scope.requisitionnumberprefix +"/"+$scope.getNextRequisitionNumber(),
-        suppliers: []
+        requisitionnumber: $scope.requisitionnumberprefix +"/"+$scope.getNextRequisitionNumber()
     }
+    function checkSupplier(){
+        var result = false;
+        if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier1){
+            $scope.newrequisition.amount = $scope.newrequisition.negotiatedcost1
+        }
+        if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier2){
+            $scope.newrequisition.amount = $scope.newrequisition.negotiatedcost2
+        }
+        if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier3){
+            $scope.newrequisition.amount = $scope.newrequisition.negotiatedcost3
+        }
 
-    $scope.saveRequisition = function(){
-    	$scope.newrequisition.supplier1 = $scope.newrequisition.suppliers[0]
-	    $scope.newrequisition.supplier2 = $scope.newrequisition.suppliers[1]
-	    $scope.newrequisition.supplier3 = $scope.newrequisition.suppliers[2]
-	    if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier1){
-	    	$scope.newrequisition.amount = $scope.newrequisition.negotiatedcost1
-	    }
-	    if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier2){
-	    	$scope.newrequisition.amount = $scope.newrequisition.negotiatedcost2
-	    }
-	    if($scope.newrequisition.selectedsupplier == $scope.newrequisition.supplier3){
-	    	$scope.newrequisition.amount = $scope.newrequisition.negotiatedcost3
-	    }
-        if($scope.newrequisition.supplier1 && $scope.newrequisition.supplier2 &&
-           $scope.newrequisition.quotedcost1 && $scope.newrequisition.quotedcost2 &&
-           $scope.newrequisition.negotiatedcost1 && $scope.newrequisition.negotiatedcost2 &&
-           $scope.newrequisition.selectedsupplier && $scope.newrequisition.reasonsuppliersection &&
-           $scope.newrequisition.justification && $scope.newrequisition.categorydetails &&
-           $scope.newrequisition.category && $scope.newrequisition.qty &&
-           $scope.newrequisition.description && $scope.newrequisition.cell){
+        if($scope.newrequisition.supplier1){
+            result = $rootScope.checkNumber($scope.newrequisition.quotedcost1)
+            if(!result) return false
+            result = $rootScope.checkNumber($scope.newrequisition.negotiatedcost1)
+            if(!result) return false
+        }else{
+            result = !$rootScope.checkNumber($scope.newrequisition.quotedcost1)
+            if(!result) return false
+            result = !$rootScope.checkNumber($scope.newrequisition.negotiatedcost1)
+            if(!result) return false
+        }
+        if($scope.newrequisition.supplier2){
+            result = $rootScope.checkNumber($scope.newrequisition.quotedcost2)
+            if(!result) return false
+            result = $rootScope.checkNumber($scope.newrequisition.negotiatedcost2)
+            if(!result) return false
+        }else{
+            result = !$rootScope.checkNumber($scope.newrequisition.quotedcost2)
+            if(!result) return false
+            result = !$rootScope.checkNumber($scope.newrequisition.negotiatedcost2)
+            if(!result) return false
+        }
+        if($scope.newrequisition.supplier3){
+            result = $rootScope.checkNumber($scope.newrequisition.quotedcost3)
+            if(!result) return false
+            result = $rootScope.checkNumber($scope.newrequisition.negotiatedcost3)
+            if(!result) return false
+        }else{
+            result = !$rootScope.checkNumber($scope.newrequisition.quotedcost3)
+            if(!result) return false
+            result = !$rootScope.checkNumber($scope.newrequisition.negotiatedcost3)
+            if(!result) return false
+        }        
+        if($scope.suppliers.length >= 2 && result){
+            return true
+        }
+        return false
+    }  
+    $scope.saveRequisition = function(){ 
+	    var result = checkSupplier()
+        console.log(result)
+        if(checkSupplier() &&
+           $scope.newrequisition.selectedsupplier && 
+           $scope.newrequisition.reasonsuppliersection &&
+           $scope.newrequisition.justification && 
+           $scope.newrequisition.categorydetails &&
+           $scope.newrequisition.category && 
+           $rootScope.checkNumber($scope.newrequisition.qty) &&
+           $scope.newrequisition.description && 
+           $scope.newrequisition.cell &&
+           $scope.newrequisition.remarks){
         	RequisitionService.saveRequitision($scope.newrequisition).success(function(){
                 $rootScope.heads.forEach(function(head){
                     if(head._id == $scope.newrequisition.headid){
@@ -88,7 +143,7 @@ angular.module('budgetTrackingApp')
             })
         }else{
             ngDialog.open({ 
-                template: '<p class="no-data">Please fill all the required details</p>',
+                template: '<p class="no-data">All fields are Mandatory to create a new requisition</p>',
                 plain: true
             });
         }
