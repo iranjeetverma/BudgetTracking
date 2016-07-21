@@ -240,7 +240,7 @@ function calcShopBudgets($scope, $rootScope){
     $rootScope.shops[i].utilizedbudget = 0;
     for(var j = 0; j <  $scope.heads.length; j++){
       if($rootScope.shops[i]._id == $scope.heads[j].shopid){
-        $rootScope.shops[i].amendedbudget = parseFloat($rootScope.shops[i].amendedbudget) + parseFloat($scope.heads[j].amendedbudget)
+        $rootScope.shops[i].amendedbudget = parseFloat($rootScope.shops[i].amendedbudget) + ($scope.heads[j].amendedbudget && $scope.heads[j].amendedbudget != "." ? parseFloat($scope.heads[j].amendedbudget) : 0)
         $rootScope.shops[i].utilizedbudget = parseFloat($rootScope.shops[i].utilizedbudget)+ parseFloat($scope.heads[j].amountutilized)
       }
     }
