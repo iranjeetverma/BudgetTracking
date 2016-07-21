@@ -30,9 +30,6 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
       })
 
       $scope.updateBudgetHead = function(keyCode, head){        
-        if(!head.amendedbudget){
-            head.amendedbudget = 0;
-        }
         if(keyCode == 13 && $rootScope.checkNumber(head.amendedbudget)){          
           head.isupdating = true
           HeadService.updateHead(head._id, {amendedbudget: head.amendedbudget}).success(function(){
@@ -64,7 +61,8 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         $scope.createHeadDialog = ngDialog.open({ 
           template: 'createHead.html', 
           className: 'ngdialog-theme-default',
-          scope: $scope
+          scope: $scope,
+          closeByDocument: false
         });
       }
        $scope.saveHead = function(){
@@ -98,6 +96,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           template: 'groupBudget.html', 
           className: 'ngdialog-theme-default',
           scope: $scope,
+          closeByDocument: false,
           width: '60%'
         });
       }
@@ -138,7 +137,8 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         $scope.createPoDialog = ngDialog.open({ 
           template: 'createPO.html', 
           className: 'ngdialog-theme-default',
-          scope: $scope
+          scope: $scope,
+          closeByDocument: false
         });
       }
       $scope.savePO = function(){
@@ -166,7 +166,7 @@ function generateGraph($scope, $rootScope){
     var graphMaxWidth = 450;
     $scope.budgets = [
       {budgetname:'ShopBudget', color:'#f1b62d', amount: $scope.shop.shopbudget},
-      {budgetname:'Amended Budget', color:'#b44322', amount: $scope.shop.amendedbudget},
+      {budgetname:'Amended Budget', color:'#b44322', amount: $scope.shop.amendedbudget? $scope.shop.amendedbudget :0 },
       {budgetname:'Amount Utilized', color:'#72ba22', amount: $scope.shop.utilizedbudget}
     ]
     var highest = $scope.budgets[0].amount
@@ -212,7 +212,7 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
                   for(var i = 0; i <  $scope.heads.length; i++){
                     $scope.heads[i].requisitions = [];
                     $scope.heads[i].amountutilized = 0
-                    $scope.heads[i].amendedbudget = $scope.heads[i].amendedbudget ? $scope.heads[i].amendedbudget : $scope.heads[i].budget;
+                    $scope.heads[i].amendedbudget = ($scope.heads[i].amendedbudget || $scope.heads[i].amendedbudget == 0) ? $scope.heads[i].amendedbudget : $scope.heads[i].budget;
                     for(var j = 0; j<  $scope.requisitions.length; j++){
                       if($scope.heads[i]._id == $scope.requisitions[j].headid){
                         $scope.heads[i].requisitions.push($scope.requisitions[j])

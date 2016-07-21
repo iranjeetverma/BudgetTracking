@@ -24,10 +24,10 @@
     <div class = "form-row">
         <div class = "form-cols-1">Requirment Description:</div>
         <div class = "form-cols-3">
-          <textarea type ="text" class = "input-7" ng-model="newrequisition.description"></textarea>
+          <textarea type ="text"  maxlength="200" class = "input-7" ng-model="newrequisition.description"></textarea>
         </div>
         <div class="form-cols-1">Qty:
-          <input type="number" class="input-2" ng-model="newrequisition.qty">
+          <input type="text" max-length class="input-2" ng-model="newrequisition.qty" >
         </div>
     </div>
     <div class = "form-row">
@@ -38,13 +38,13 @@
           ng-model="newrequisition.category"></select>
       </div>
       <div class = "form-cols-2">Detail:
-        <textarea type="text" class="input-6" style="width:77%;" ng-model="newrequisition.categorydetails"></textarea>
+        <textarea type="text"  maxlength="200" class="input-6" style="width:77%;" ng-model="newrequisition.categorydetails"></textarea>
       </div>
     </div>
     <div class = "form-row">
       <div class = "form-cols-1">Justification:</div>
       <div class = "form-cols-3">
-        <textarea type="text" class="input-7" ng-model="newrequisition.justification"></textarea>
+        <textarea type="text"  maxlength="200" class="input-7" ng-model="newrequisition.justification"></textarea>
       </div>
     </div>
     <div class = "form-row">
@@ -62,25 +62,25 @@
     <div class = "form-row">
       <div class = "form-cols-1">Quoted Cost:</div>
       <div class = "form-cols-1">
-        <input type = "number" placeholder="Quoted Cost 1" class = "input-6" ng-model="newrequisition.quotedcost1">
+        <input type="text" max-length placeholder="Quoted Cost 1" class = "input-6" ng-model="newrequisition.quotedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type = "number" placeholder="Quoted Cost 2"class = "input-6" ng-model="newrequisition.quotedcost2">
+        <input type="text" max-length placeholder="Quoted Cost 2"class = "input-6" ng-model="newrequisition.quotedcost2">
       </div>
       <div class = "form-cols-1">
-        <input type = "number" placeholder="Quoted Cost 3" class = "input-6" ng-model="newrequisition.quotedcost3">
+        <input type="text" max-length placeholder="Quoted Cost 3" class = "input-6" ng-model="newrequisition.quotedcost3">
       </div>
     </div>
     <div class = "form-row">
       <div class = "form-cols-1">Negotiated Cost:</div>
       <div class = "form-cols-1">
-        <input type="number" placeholder="Negotiated Cost 1" class="input-6" ng-model="newrequisition.negotiatedcost1">
+        <input type="text" max-length placeholder="Negotiated Cost 1" class="input-6" ng-model="newrequisition.negotiatedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type="number" placeholder="Negotiated Cost 2" class="input-6" ng-model="newrequisition.negotiatedcost2">
+        <input type="text" max-length placeholder="Negotiated Cost 2" class="input-6" ng-model="newrequisition.negotiatedcost2">
       </div>
       <div class = "form-cols-1">
-        <input type="number" placeholder="Negotiated Cost 3" class = "input-6" ng-model="newrequisition.negotiatedcost3">
+        <input type="text" max-length placeholder="Negotiated Cost 3" class = "input-6" ng-model="newrequisition.negotiatedcost3">
       </div>
     </div>
     <div class = "form-row">
@@ -94,7 +94,7 @@
       </div>      
       <div class = "form-cols-1">Reason For Selection:</div>
       <div class = "form-cols-1 ">
-        <textarea type = "text"  class = "input-6" ng-model="newrequisition.reasonsuppliersection"></textarea>
+        <textarea type = "text"   maxlength="200" class = "input-6" ng-model="newrequisition.reasonsuppliersection"></textarea>
       </div>
     </div>      
   </form>
@@ -218,7 +218,7 @@
         <div class = "form-row">
           <div class = "form-cols-1">Remark:</div>
           <div class = "form-cols-2">
-            <textarea type = "text"  class = "input-7" ng-model="newrequisition.remarks"></textarea>
+            <textarea type = "text"  maxlength="200" class = "input-7" ng-model="newrequisition.remarks"></textarea>
           </div>
         </div>
       </div>
