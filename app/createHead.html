@@ -6,7 +6,7 @@
 		</div>
 		<div>
 			<span class="label">Description</span>
-			<input type="text" ng-model="newhead.headname" class="control">
+			<input  maxlength="200" type="text" ng-model="newhead.headname" class="control">
 		</div>
 		<div>
 			<span class="label">Budget</span>
@@ -14,11 +14,11 @@
 		</div>
 		<div>
 			<span class="label">Head Code</span>
-			<input type="text" ng-model="newhead.headcode" class="control">
+			<input  maxlength="200" type="text" ng-model="newhead.headcode" class="control">
 		</div>
 		<div>
 			<span class="label">Remarks</span>
-			<textarea ng-model="newhead.remarks" class="control"></textarea>
+			<textarea  maxlength="200" ng-model="newhead.remarks" class="control"></textarea>
 		</div>
 		<div ng-hide="isHeadSaving" style="overflow: hidden;">	      
 			<a class = "button-grashgreen" ng-click="saveHead()" class="control"> Save </a>

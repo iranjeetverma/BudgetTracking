@@ -10,6 +10,11 @@
 angular.module('budgetTrackingApp')
 .controller('ShopCtrl', ['$scope', '$rootScope', 'ShopService', '$location', 
 	function ($scope, $rootScope, ShopService, $location) {
+	$rootScope.$on('showMenu', function(e, showMenu){
+		console.log(showMenu)
+		$scope.openMenu = showMenu
+	})
+	$scope.openMenu = $rootScope.openMenu
 	$scope.getShops = function(){
 		ShopService.getShops().success(function(shopData){
 			if(shopData && shopData.results){				
@@ -21,6 +26,10 @@ angular.module('budgetTrackingApp')
 				}
 				$rootScope.$emit('shopselected', $scope.selectedShopForNav)
 			}
+		}).error(function(data, status){
+			$rootScope.handleError(data, status)
+		}).catch(function(exception){
+			$rootScope.handleError(null, null, exception)
 		})	
 	}
 	$scope.getShops();

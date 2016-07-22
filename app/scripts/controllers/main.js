@@ -9,21 +9,35 @@
  */
 
 angular.module('budgetTrackingApp').controller('MainCtrl', 
-  ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 'YearService', 
-    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService) {
+  ['$scope','$rootScope', 'HeadService', 'RequisitionService', 'POService', 'ngDialog', 'YearService', '$timeout', 
+    function ($scope, $rootScope, HeadService, RequisitionService, POService, ngDialog, YearService, $timeout) {
       $rootScope.checkNumber = function(number) {
-        if(number == undefined || number == null || number <0){
+        if(number == undefined || number == null || number < 0 || number == ""){
           return false;
         }
         return true;
       }
+      
+      $rootScope.handleError = function(data, status, exception){
+        $rootScope.showNetworkError = true;
+          $timeout(function () {
+            $rootScope.showNetworkError = false;
+        }, 3500);
+      }
+
       $rootScope.$on('shopselected', function(e, shop){
+        $rootScope.openMenu = false
+        $rootScope.$emit('showMenu', $rootScope.openMenu)
         $scope.shop = shop
         if(!$scope.heads){
           YearService.getYear().success(function(yearData){
             $rootScope.startoftheyear = yearData.results[0].startoftheyear;
             loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
-          })          
+          }).error(function(data, status){
+              $rootScope.handleError(data, status)
+            }).catch(function(exception){
+              $rootScope.handleError(null, null, exception)
+            })  
         }else{
           generateGraph($scope, $rootScope)
         }
@@ -35,7 +49,13 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           HeadService.updateHead(head._id, {amendedbudget: head.amendedbudget}).success(function(){
             head.isupdating = false;
             generateGraph($scope, $rootScope)
-          })
+          }).error(function(data, status){
+              head.isupdating = false;
+              $rootScope.handleError(data, status)
+            }).catch(function(exception){
+              head.isupdating = false;
+              $rootScope.handleError(null, null, exception)
+            })  
         }
         generateGraph($scope, $rootScope)
       }
@@ -44,7 +64,13 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           requisition.isupdating = true        
           RequisitionService.updateRequitision(requisition._id, {isapproved :requisition.isapproved}).success(function(){
             requisition.isupdating = false
-          })
+          }).error(function(data, status){
+            requisition.isupdating = false
+            $rootScope.handleError(data, status)
+          }).catch(function(exception){
+            requisition.isupdating = false
+            $rootScope.handleError(null, null, exception)
+          })  
       }
       $scope.openHead = function(head){
         if($scope.activeHead == head){
@@ -75,7 +101,13 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
              $scope.isHeadSaving = false          
              loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
              ngDialog.close( $scope.createHeadDialog)
-          })
+          }).error(function(data, status){
+              $scope.isHeadSaving = false  
+              $rootScope.handleError(data, status)
+            }).catch(function(exception){
+              $scope.isHeadSaving = false  
+              $rootScope.handleError(null, null, exception)
+            })  
         }else{
             ngDialog.open({ 
                 template: '<p class="no-data">All fields are Mandatory to create a new head</p>',
@@ -96,7 +128,6 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
           template: 'groupBudget.html', 
           className: 'ngdialog-theme-default',
           scope: $scope,
-          closeByDocument: false,
           width: '60%'
         });
       }
@@ -151,7 +182,13 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
              $scope.isPOSaving = false
              loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
              ngDialog.close( $scope.createPoDialog)  
-          })
+          }).error(function(data, status){
+              $scope.isPOSaving = false 
+              $rootScope.handleError(data, status)
+            }).catch(function(exception){
+              $scope.isPOSaving = false
+              $rootScope.handleError(null, null, exception)
+            }) 
         }else{
             ngDialog.open({ 
                 template: '<p class="no-data">All fields are Mandatory to create a new po</p>',
@@ -169,16 +206,8 @@ function generateGraph($scope, $rootScope){
       {budgetname:'Amended Budget', color:'#b44322', amount: $scope.shop.amendedbudget? $scope.shop.amendedbudget :0 },
       {budgetname:'Amount Utilized', color:'#72ba22', amount: $scope.shop.utilizedbudget}
     ]
-    var highest = $scope.budgets[0].amount
-    
-    if($scope.budgets[0].amount >= $scope.budgets[1].amount && $scope.budgets[0].amount >= $scope.budgets[2].amount){
-      highest = $scope.budgets[0].amount
-    }else if($scope.budgets[1].amount >= $scope.budgets[0].amount && $scope.budgets[1].amount >= $scope.budgets[2].amount){
-      highest = $scope.budgets[1].amount
-    } else {
-      highest = $scope.budgets[2].amount
-    }
-    
+    var highest = Math.max($scope.budgets[0].amount, $scope.budgets[1].amount, $scope.budgets[2].amount)
+
     $scope.budgets[0].width = (graphMaxWidth/highest) * $scope.budgets[0].amount
     $scope.budgets[1].width = (graphMaxWidth/highest) * $scope.budgets[1].amount
     $scope.budgets[2].width = (graphMaxWidth/highest) * $scope.budgets[2].amount
@@ -226,13 +255,13 @@ function loadShopData($scope, $rootScope, HeadService, RequisitionService, POSer
                     }                    
                   }                  
                   generateGraph($scope, $rootScope) 
-                })              
+                })               
             }
             $rootScope.requisitions = $scope.requisitions;
         })
         $rootScope.heads = $scope.heads;           
       }     
-  })
+  }) 
 }
 function calcShopBudgets($scope, $rootScope){
   for(var i=0; i< $rootScope.shops.length; i++){

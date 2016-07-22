@@ -1,7 +1,7 @@
 angular.module('budgetTrackingApp').config(['$routeProvider', function($routeProvider) {
     $routeProvider
     	.when('/home', {
-    		templateUrl: 'shopsummary.html', 
+    		templateUrl: 'shopSummary.html', 
     		controller: 'ShopCtrl'
     })
     .when('/requisition', {

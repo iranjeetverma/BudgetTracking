@@ -1,4 +1,4 @@
-<div ng-controller="MainCtrl">
+<div ng-controller="MainCtrl" class="page-controller">
   <!-- Graph Container start-->
   <div class="container">
     <div ng-repeat="budget in budgets">
@@ -23,6 +23,9 @@
     <div>
       <a class = "button-lightblue" ng-click="createHead()">Create New Head</a>
     </div>
+  </div>
+  <div class="network-error" ng-show="showNetworkError">
+    Can not procees the your request. Please check your internet connection or try again.
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-<div class = "form-container" ng-controller = "RequisitionCtrl">    
+<div class = "form-container page-controller"" ng-controller = "RequisitionCtrl" >    
   <div class = "form-title">
     <div class = "title">Fixed Cost Requistion Form</div>
   </div>
@@ -12,55 +12,55 @@
   </div> 
   <form class="container">
     <div class="form-row">
-        <div class="form-cols-1">Requisition Number:</div>
+        <div class="form-cols-1">Requisition Number</div>
         <div class="form-cols-1">
           {{newrequisition.requisitionnumber}}
         </div>
-        <div class="form-cols-2">Shop: <strong>{{newrequisition.shopname}}</strong></div> 
-        <div class="form-cols-1">Cell:
-          <input type="text" class="input-4" ng-model="newrequisition.cell">
+        <div class="form-cols-2 text-overflow">Shop: <strong>{{newrequisition.shopname}}</strong></div> 
+        <div class="form-cols-1">Cell
+          <input type="text"  maxlength="200" class="input-4" ng-model="newrequisition.cell">
         </div>
     </div>
     <div class = "form-row">
-        <div class = "form-cols-1">Requirment Description:</div>
+        <div class = "form-cols-1">Requirment Description</div>
         <div class = "form-cols-3">
           <textarea type ="text"  maxlength="200" class = "input-7" ng-model="newrequisition.description"></textarea>
         </div>
-        <div class="form-cols-1">Qty:
+        <div class="form-cols-1">Qty
           <input type="text" max-length class="input-2" ng-model="newrequisition.qty" >
         </div>
     </div>
     <div class = "form-row">
-      <div class = "form-cols-1 ">Category:</div>
+      <div class = "form-cols-1 ">Category</div>
       <div class = "form-cols-1">
         <select class = "input-6"
           ng-options="category as category for category in categories"
           ng-model="newrequisition.category"></select>
       </div>
-      <div class = "form-cols-2">Detail:
+      <div class = "form-cols-2">Detail
         <textarea type="text"  maxlength="200" class="input-6" style="width:77%;" ng-model="newrequisition.categorydetails"></textarea>
       </div>
     </div>
     <div class = "form-row">
-      <div class = "form-cols-1">Justification:</div>
+      <div class = "form-cols-1">Justification</div>
       <div class = "form-cols-3">
         <textarea type="text"  maxlength="200" class="input-7" ng-model="newrequisition.justification"></textarea>
       </div>
     </div>
     <div class = "form-row">
-      <div class = "form-cols-1">Quotation Received From:</div>
+      <div class = "form-cols-1">Quotation Received From</div>
       <div class="form-cols-1">
-        <input type="text" placeholder="Supplier1" class="input-6" ng-model="newrequisition.supplier1" ng-change="supplierChange('Supplier1')">
+        <input type="text"  maxlength="200" placeholder="Supplier1" class="input-6" ng-model="newrequisition.supplier1" ng-change="supplierChange('Supplier1')">
       </div>
       <div class="form-cols-1">
-        <input type="text" placeholder="Supplier2" class="input-6" ng-model="newrequisition.supplier2" ng-change="supplierChange('Supplier2')">
+        <input type="text"  maxlength="200" placeholder="Supplier2" class="input-6" ng-model="newrequisition.supplier2" ng-change="supplierChange('Supplier2')">
       </div>
       <div class="form-cols-1">
-        <input type="text" placeholder="Supplier3" class="input-6" ng-model="newrequisition.supplier3" ng-change="supplierChange('Supplier3')">
+        <input type="text"  maxlength="200" placeholder="Supplier3" class="input-6" ng-model="newrequisition.supplier3" ng-change="supplierChange('Supplier3')">
       </div>
     </div>
     <div class = "form-row">
-      <div class = "form-cols-1">Quoted Cost:</div>
+      <div class = "form-cols-1">Quoted Cost</div>
       <div class = "form-cols-1">
         <input type="text" max-length placeholder="Quoted Cost 1" class = "input-6" ng-model="newrequisition.quotedcost1">
       </div>
@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class = "form-row">
-      <div class = "form-cols-1">Negotiated Cost:</div>
+      <div class = "form-cols-1">Negotiated Cost</div>
       <div class = "form-cols-1">
         <input type="text" max-length placeholder="Negotiated Cost 1" class="input-6" ng-model="newrequisition.negotiatedcost1">
       </div>
@@ -84,7 +84,7 @@
       </div>
     </div>
     <div class = "form-row">
-      <div class = "form-cols-1">Selected Supplier:</div>
+      <div class = "form-cols-1">Selected Supplier</div>
       <div class = "form-cols-1 ">
         <select class = "input-6"
           ng-options="supplier as supplier for supplier in suppliers"
@@ -101,7 +101,7 @@
   <div class = "container">
     <div class = "form-row">
       <div class = "form-cols-1">Budget</div>
-      <div class = "form-cols-3">
+      <div class = "form-cols-3 text-overflow">
         <strong>Fixed Cost Budget {{selectedShopForNav.shortname}}</strong>
       </div>
     </div>
@@ -109,7 +109,7 @@
   <div class = "container">
     <div class = "form-row">
       <div class = "form-cols-1">Shop Description</div>
-      <div class = "form-cols-3"><strong>{{selectedShopForNav.shopname}}</strong></div>
+      <div class = "form-cols-3 text-overflow"><strong>{{selectedShopForNav.shopname}}</strong></div>
     </div>
   </div>
   <div class = "container">
@@ -117,7 +117,7 @@
       <div class = "project-budget-section">
         <div class = "form-row">
           <div class = "form-cols-2 bold">Project-Budget</div>
-          <div class = "form-cols-3 bold">{{activeHead.headname}}</div>
+          <div class = "form-cols-3 bold text-overflow">{{activeHead.headname}}</div>
         </div>
         <div class = "form-row">
           <div class = "form-cols-2">Budget Allocated:</div>          
@@ -134,7 +134,7 @@
       </div>
       <div class = "po-section">
         <div class = "form-row">
-            <div class = "form-cols-2 bold">PO Released:</div>
+            <div class = "form-cols-2 bold">PO Released</div>
         </div>
         <div class = "form-row" style="font-weight:600;">
             <div class = "form-cols-2">PO No.</div>
@@ -156,7 +156,7 @@
       <div class ="shop-budget">
         <div class = "form-row">
           <div class = "form-cols-1 bold">Shop Budget</div>
-          <div class = "form-cols-3 bold">{{selectedShopForNav.shopname}}</div>
+          <div class = "form-cols-3 bold text-overflow">{{selectedShopForNav.shopname}}</div>
         </div>
         <div class = "form-row">
           <div class = "form-cols-1">Budget Allocated:</div>
@@ -253,4 +253,7 @@
       <a href = "#/home"><button class = "button-lightblue">Cancel</button></a>
     </div>
   </div>  
+  <div class="network-error" ng-show="showNetworkError">
+    Can not procees the your request. Please check your internet connection or try again.  
+  </div>
 </div>

@@ -20,7 +20,7 @@
   </head>
   <body ng-app="budgetTrackingApp">
     <div ng-include="'header.html'"></div>
-    <div ng-include="'side-nav.html'" class="nav-bar"></div>
+    <div ng-include="'sideNav.html'" class="nav-bar"></div>
     <div id="main">
         <ng-view></ng-view>
     </div>
@@ -34,6 +34,7 @@
     <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -53,9 +54,9 @@
         <script src="scripts/services/head.js"></script>
         <script src="scripts/services/requisition.js"></script>
         <script src="scripts/services/po.js"></script>
-        <script src="scripts/services/financialyear.js"></script>
+        <script src="scripts/services/financialYear.js"></script>
 
-        <script src="scripts/directives/budgethead.js"></script>
+        <script src="scripts/directives/budgetHead.js"></script>
         <script src="scripts/directives/budgetRequisition.js"></script>
         <script src="scripts/directives/budgetPO.js"></script>
         <script src="scripts/directives/numberLength.js"></script>

@@ -22,7 +22,7 @@
 		
 		<div>
 			<span class="label">Description</span>
-			<textarea ng-model="newpo.description" class="control"></textarea>
+			<textarea ng-model="newpo.description" class="control"  maxlength="200"></textarea>
 		</div>
 		<div ng-hide="isPOSaving" style="overflow: hidden;">	      
 			<a class = "button-grashgreen" ng-click="savePO()" class="control" ng-hide="requisitionPOAmount + newpo.amount > currentRequisition.amount"> Save </a>

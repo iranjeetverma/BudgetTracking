@@ -114,7 +114,7 @@ angular.module('budgetTrackingApp')
             result = !$rootScope.checkNumber($scope.newrequisition.negotiatedcost3)
             if(!result) return false
         }        
-        if($scope.suppliers.length >= 2 && result){
+        if($scope.suppliers && $scope.suppliers.length >= 2 && result){
             return true
         }
         return false
@@ -140,7 +140,11 @@ angular.module('budgetTrackingApp')
                     }
                 })
                 $location.path( 'home' );
-            })
+            }).error(function(data, status){
+                $rootScope.handleError(data, status)
+            }).catch(function(exception){
+                $rootScope.handleError(null, null, exception)
+            })  
         }else{
             ngDialog.open({ 
                 template: '<p class="no-data">All fields are Mandatory to create a new requisition</p>',

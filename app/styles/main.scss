@@ -21,9 +21,13 @@ body{
 	border-bottom: 1px solid $border-color;
 	background-color: #e3e8f4;
 	color: $text-color;
+	width: 100%;
+	position: fixed;
+	margin-bottom: 40px;
 	.logo{
 		margin-top:5px;
 		margin-left: 15px;
+		transition: .2s;
 	}
 	.user{
 	float: right;
@@ -45,6 +49,12 @@ body{
 .nav-bar {	
 	float: left;
 	width: 220px;
+	margin-top: 10px;
+	transition: .2s;
+	background-color: #29394a;
+	height: 550px;
+	overflow-y: auto;
+	overflow-x: hidden;
   ul {
     list-style: none;
 	padding: 0;
@@ -72,6 +82,7 @@ body{
 .container{
 	border: 1px solid #ddd;
 	margin: 15px;
+	margin-top: 33px;
   	padding: 15px;
   	overflow: hidden;
   	background: #fff;
@@ -198,8 +209,8 @@ body{
 	display: flex;
 }
 .requisitiondetalis-tile div:nth-of-type(1) {flex-grow: 1;}
-.requisitiondetalis-tile div:nth-of-type(2) {flex-grow: 1;}
-.requisitiondetalis-tile div:nth-of-type(3) {flex-grow: 3;}
+.requisitiondetalis-tile div:nth-of-type(2) {flex-grow: 1.5;}
+.requisitiondetalis-tile div:nth-of-type(3) {flex-grow: 2.5;}
 .requisitiondetalis-tile div:nth-of-type(4) {flex-grow: 1;}
 .requisitiondetalis-tile div:nth-of-type(5) {flex-grow: 1;}
 
@@ -224,8 +235,8 @@ body{
 	@extend .requisitiondetalis-tile;	
 }
 .POdetalis-tile div:nth-of-type(1) {flex-grow: 1;}
-.POdetalis-tile div:nth-of-type(2) {flex-grow: 1;}
-.POdetalis-tile div:nth-of-type(3) {flex-grow: 3;}
+.POdetalis-tile div:nth-of-type(2) {flex-grow: 1.5;}
+.POdetalis-tile div:nth-of-type(3) {flex-grow: 2.5;}
 .POdetalis-tile div:nth-of-type(4) {flex-grow: 1;}
 .POdetalis-tile div:nth-of-type(5) {flex-grow: 1;}
 
@@ -332,14 +343,20 @@ table.group-budget {
 	font-size: 90%;
 	width: 100%;
 	thead{
-		background-color: #29394a;
+		
 		color: #fff;
-		tr td{
-			border-top: 1px solid #9c9c9c;
-			border-bottom: 1px solid #9c9c9c;
-			text-align: right;
-			&:first-child{
-				text-align: left;
+		display: block;
+		tr {
+			background-color: #29394a;
+			td{
+				border-top: 1px solid #9c9c9c;
+				border-bottom: 1px solid #9c9c9c;
+				text-align: right;
+				width: 190px;
+				&:first-child{
+					text-align: left;
+					border-left: 1px solid #9c9c9c;
+				}
 			}
 		}
 	}
@@ -348,7 +365,8 @@ table.group-budget {
 			padding: 8px;
 			padding-right: 16px;
 			text-align: right;
-			border-right: 1px solid #9c9c9c;
+			width: 190px;
+			border-right:1px solid #9c9c9c; 
 			&:first-child{
 				text-align: left;
 				border-left: 1px solid #9c9c9c;
@@ -356,6 +374,10 @@ table.group-budget {
 		}		
 	}
 	tbody{
+	    height: 195px;
+	    display: block;
+    	overflow-y: auto;
+    	overflow-x: hidden;
 		tr:last-child td{
 			border-top: 1px solid #9c9c9c;
 			border-bottom: 1px solid #9c9c9c;
@@ -444,4 +466,60 @@ input::-webkit-input-placeholder{
 
 input, textarea, select, option {
 	color: #333;
+}
+
+.text-overflow{
+	text-overflow: ellipsis;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.network-error{
+	color: #fff;
+	background: brown;
+	padding: 13px;
+	position: fixed;
+	top: 0;
+	left: 30%;
+	margin: 0 auto;
+	transition: .5s;
+	z-index: 10001;
+}
+
+.ng-hide { 
+  top:-60px;
+}
+.ng-show { 
+  top: 0px;
+}
+
+.hamburger{	
+    height: 50px;
+    vertical-align: middle;
+    margin-left: 20px;
+	display: none;
+	color: #29394a;
+	cursor: pointer;
+}
+.showMenu{
+	left: 0px !important;
+}
+@media(max-width: 1200px){
+	.hamburger{
+		display: inline-block;
+	}
+	.nav-bar{
+		position: fixed;
+		top: 35px;
+		left: -220px;
+	}	
+	.header .logo{
+		margin-left: 25px;
+	}
+	#main{
+		float: none;
+	}
 }
