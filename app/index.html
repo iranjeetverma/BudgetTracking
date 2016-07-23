@@ -20,9 +20,11 @@
   </head>
   <body ng-app="budgetTrackingApp">
     <div ng-include="'header.html'"></div>
-    <div ng-include="'sideNav.html'" class="nav-bar"></div>
-    <div id="main">
-        <ng-view></ng-view>
+    <div id="main-container">
+        <div ng-include="'sideNav.html'" ></div>
+        <div id="main">
+            <ng-view></ng-view>
+        </div>
     </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -34,7 +36,6 @@
     <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

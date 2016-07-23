@@ -60,7 +60,6 @@ angular.module('budgetTrackingApp')
             }
             return false
         })
-        console.log($scope.suppliers)
     }
 
     $scope.newrequisition = {
@@ -121,7 +120,6 @@ angular.module('budgetTrackingApp')
     }  
     $scope.saveRequisition = function(){ 
 	    var result = checkSupplier()
-        console.log(result)
         if(checkSupplier() &&
            $scope.newrequisition.selectedsupplier && 
            $scope.newrequisition.reasonsuppliersection &&

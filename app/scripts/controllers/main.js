@@ -26,6 +26,7 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
       }
 
       $rootScope.$on('shopselected', function(e, shop){
+        document.getElementById('main').scrollTop  = 0;
         $rootScope.openMenu = false
         $rootScope.$emit('showMenu', $rootScope.openMenu)
         $scope.shop = shop

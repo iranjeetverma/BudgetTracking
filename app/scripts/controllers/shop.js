@@ -11,16 +11,20 @@ angular.module('budgetTrackingApp')
 .controller('ShopCtrl', ['$scope', '$rootScope', 'ShopService', '$location', 
 	function ($scope, $rootScope, ShopService, $location) {
 	$rootScope.$on('showMenu', function(e, showMenu){
-		console.log(showMenu)
 		$scope.openMenu = showMenu
 	})
 	$scope.openMenu = $rootScope.openMenu
 	$scope.getShops = function(){
 		ShopService.getShops().success(function(shopData){
-			if(shopData && shopData.results){				
+			if(shopData && shopData.results){							
 				$scope.shops = shopData.results
+				$scope.shops.forEach(function(shop){
+					if(!shop.shopbudget){
+						shop.shopbudget = 0;
+					}
+				})
 				$rootScope.shops = $scope.shops				
-				if(!$rootScope.selectedShopForNav){
+				if(!$rootScope.selectedShopForNav ){
 					$scope.selectedShopForNav = $scope.shops[0]
 					$rootScope.selectedShopForNav = $scope.selectedShopForNav
 				}
