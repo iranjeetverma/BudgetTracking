@@ -138,6 +138,7 @@ angular.module('budgetTrackingApp')
                         head.requisitions.push($scope.newrequisition)
                     }
                 })
+                $rootScope.heads = null
                 $location.path( 'home' );
             }).error(function(data, status){
                 $rootScope.handleError(data, status)
