@@ -134,6 +134,7 @@ angular.module('budgetTrackingApp')
                 $rootScope.heads.forEach(function(head){
                     if(head._id == $scope.newrequisition.headid){
                         $scope.newrequisition.createdTimestamp = moment().date() + '-'+ (moment().month()+1) + '-'+ moment().year()
+                        $scope.newrequisition.po = [];
                         head.requisitions.push($scope.newrequisition)
                     }
                 })

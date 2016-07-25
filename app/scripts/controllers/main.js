@@ -30,18 +30,15 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         $rootScope.openMenu = false
         $rootScope.$emit('showMenu', $rootScope.openMenu)
         $scope.shop = shop
-        if(!$scope.heads){
-          YearService.getYear().success(function(yearData){
-            $rootScope.startoftheyear = yearData.results[0].startoftheyear;
-            loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
-          }).error(function(data, status){
-              $rootScope.handleError(data, status)
-            }).catch(function(exception){
-              $rootScope.handleError(null, null, exception)
-            })  
-        }else{
-          generateGraph($scope, $rootScope)
-        }
+        YearService.getYear().success(function(yearData){
+          $rootScope.startoftheyear = yearData.results[0].startoftheyear;
+          loadShopData($scope, $rootScope, HeadService, RequisitionService, POService)
+        }).error(function(data, status){
+            $rootScope.handleError(data, status)
+          }).catch(function(exception){
+            $rootScope.handleError(null, null, exception)
+          })  
+        generateGraph($scope, $rootScope)
       })
 
       $scope.updateBudgetHead = function(keyCode, head){        
