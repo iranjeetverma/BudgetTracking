@@ -38,7 +38,7 @@
           ng-model="newrequisition.category"></select>
       </div>
       <div class = "form-cols-2">Detail
-        <textarea type="text"  maxlength="200" class="input-6" style="width:77%;" ng-model="newrequisition.categorydetails"></textarea>
+        <textarea type="text"  maxlength="200" class="input-6" style="width:78.5%;" ng-model="newrequisition.categorydetails"></textarea>
       </div>
     </div>
     <div class = "form-row">
@@ -65,7 +65,7 @@
         <input type="text" max-length placeholder="Quoted Cost 1" class = "input-6" ng-model="newrequisition.quotedcost1">
       </div>
       <div class = "form-cols-1">
-        <input type="text" max-length placeholder="Quoted Cost 2"class = "input-6" ng-model="newrequisition.quotedcost2">
+        <input type="text" max-length placeholder="Quoted Cost 2" class = "input-6" ng-model="newrequisition.quotedcost2">
       </div>
       <div class = "form-cols-1">
         <input type="text" max-length placeholder="Quoted Cost 3" class = "input-6" ng-model="newrequisition.quotedcost3">
@@ -120,15 +120,15 @@
           <div class = "form-cols-3 bold text-overflow">{{activeHead.headname}}</div>
         </div>
         <div class = "form-row">
-          <div class = "form-cols-2">Budget Allocated:</div>          
+          <div class = "form-cols-2">Budget Allocated</div>          
           <div class = "form-cols-2">{{activeHead.budget  | currency: "Rs. "}}</div> 
         </div>
         <div class = "form-row">
-          <div class = "form-cols-2">Budget Consumed:</div>
+          <div class = "form-cols-2">Budget Consumed</div>
           <div class = "form-cols-2">{{activeHead.amountutilized  | currency: "Rs. "}}</div>
         </div>
         <div class = "form-row">
-          <div class = "form-cols-2">Balance Budget:</div>
+          <div class = "form-cols-2">Balance Budget</div>
           <div class = "form-cols-2">{{activeHead.budget - activeHead.amountutilized  | currency: "Rs. "}}</div>
         </div>
       </div>
@@ -159,7 +159,7 @@
           <div class = "form-cols-3 bold text-overflow">{{selectedShopForNav.shopname}}</div>
         </div>
         <div class = "form-row">
-          <div class = "form-cols-1">Budget Allocated:</div>
+          <div class = "form-cols-1">Budget Allocated</div>
           <div class="form-cols-1">
             <span class="Q-color">Q1:</span>
             <span>{{selectedShopForNav.shopbudget/4 | currency : "Rs. "}}</span>
@@ -178,7 +178,7 @@
           </div>
         </div>
         <div class = "form-row">
-          <div class = "form-cols-1">Budget Consumed:</div>
+          <div class = "form-cols-1">Budget Consumed</div>
           <div class = "form-cols-1">
             <span class="Q-color">Q1:</span>
             <span>{{quarters[0] | currency : "Rs. "}}</span>
@@ -197,7 +197,7 @@
           </div>          
         </div>
         <div class = "form-row">
-          <div class = "form-cols-1">Balance Budget:</div>
+          <div class = "form-cols-1">Balance Budget</div>
           <div class = "form-cols-1">
             <span class="Q-color">Q1:</span>
             <span>{{selectedShopForNav.shopbudget/4 - quarters[0] | currency : "Rs. "}}</span>
@@ -216,7 +216,7 @@
           </div>
         </div>
         <div class = "form-row">
-          <div class = "form-cols-1">Remark:</div>
+          <div class = "form-cols-1">Remark</div>
           <div class = "form-cols-2">
             <textarea type = "text"  maxlength="200" class = "input-7" ng-model="newrequisition.remarks"></textarea>
           </div>
