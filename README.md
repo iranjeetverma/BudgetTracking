@@ -1,12 +1,15 @@
-# budget-tracking
+#Bajaj Budget Tracking System
 
-*Bajaj*
-Budget Tracking System
 
-## Build & development
+## Build & Development
 
-Run `grunt` for building and `grunt serve` for preview.
+### For deployment 
+1. `npm run build` for building 
+2. deploy the generated `dist` folder
 
-## Testing
+###Before deployment
+1. Install `npm install http-server -g` (if not installed)
+2. `http-server ./dist` // Runs the dist folder locally
 
-Running `grunt test` will run the unit tests with karma.
+### Local Dev
+1. `npm start` for preview.

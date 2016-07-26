@@ -1,0 +1,27 @@
+<div>
+	<h1> Create New Head</h1>
+	<form class="dialog-form">
+		<div>
+			<input type="hidden" ng-model="newhead.shopid" class="control">			
+		</div>
+		<div>
+			<span class="label">Head Name</span>
+			<input  maxlength="200" type="text" ng-model="newhead.headname" class="control">
+		</div>
+		<div>
+			<span class="label">Budget</span>
+			<input type="text" max-length ng-model="newhead.budget" class="control">
+		</div>
+		<div>
+			<span class="label">Head Code</span>
+			<input  maxlength="200" type="text" ng-model="newhead.headcode" class="control">
+		</div>
+		<div>
+			<span class="label">Remarks</span>
+			<textarea  maxlength="200" ng-model="newhead.remarks" class="control"></textarea>
+		</div>
+		<div ng-hide="isHeadSaving" style="overflow: hidden;">	      
+			<a class = "button-grashgreen" ng-click="saveHead()" class="control"> Save </a>
+	    </div>
+	</form>
+</div>

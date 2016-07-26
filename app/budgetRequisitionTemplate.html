@@ -1,0 +1,46 @@
+<div class = "Requisition-container">  
+  <div class= "requisitiondetalis-tile">
+    <div class= "requisitiondetalis">
+      <div class = "alinment">{{requisition.createdTimestamp.split(":")[0]}}</div>
+    </div>
+    <div class= "requisitiondetalis">
+      <div class = "alinment text-overflow">{{requisition.requisitionnumber}}</div>
+    </div>
+    <div class= "requisitiondetalis">
+      <div class = "alinment">{{requisition.description}}</div>
+    </div>
+    <div class= "requisitiondetalis">
+      <div class = "alinment">{{requisition.amount | currency:"Rs. "}}</div>
+    </div>
+    <div class= "requisitiondetalis">
+      <div class = "alinment">
+        <input type= "checkbox" ng-model="requisition.isapproved" ng-change="approveRequisition(requisition)" ng-disabled="requisition.isupdating">
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "PO-container">      
+  <div class= "POdetalis-tile head">
+    <div class= "POdetalis">
+      <div class = "alinment">Date</div>
+    </div>
+    <div class= "POdetalis">
+        <div class = "alinment">PO NO</div>
+    </div>
+    <div class= "POdetalis">
+        <div class = "alinment">Description</div>
+    </div>
+    <div class= "POdetalis">
+      <div class = "alinment">Amount</div>
+    </div>
+    <div class= "POdetalis">
+      <div class = "alinment"></div>
+    </div>
+  </div>
+</div>
+<div ng-repeat="po in requisition.po">
+    <budget-po></budget-po>
+</div>
+<div class = "PO-container">
+  <i class="fa fa-plus" aria-hidden="true" ng-click="createPo(requisition)" tooltip="Create PO "></i>
+</div>
