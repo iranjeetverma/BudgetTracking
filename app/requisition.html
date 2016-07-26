@@ -1,10 +1,10 @@
 <div class = "form-container page-controller"" ng-controller = "RequisitionCtrl" >    
   <div class = "form-title">
-    <div class = "title">Fixed Cost Requisition Form</div>
+    <div class = "text-overflow title">Fixed Cost Requisition Form</div>
   </div>
   <div class = "form-title">
-      <div class = "division-name">Division: {{selectedShopForNav.division}}</div>               
-      <div class = "budget-name" >Budget Head: {{activeHead.headname}}</div>
+      <div class = "text-overflow division-name">Division: {{selectedShopForNav.division}}</div>               
+      <div class = "text-overflow budget-name" >Budget Head: {{activeHead.headname}}</div>
       <div class="date">
         <div class="newhead" ng-hide="activeHead.newhead != 'true'">New Head</div>
         <div>Date: {{ today | date:"dd/MM/yyyy"}}</div>
@@ -117,7 +117,7 @@
       <div class = "project-budget-section">
         <div class = "form-row">
           <div class = "form-cols-2 bold">Project-Budget</div>
-          <div class = "form-cols-3 bold text-overflow">{{activeHead.headname}}</div>
+          <div class = "form-cols-3 bold text-overflow" style="width: 200px;">{{activeHead.headname}}</div>
         </div>
         <div class = "form-row">
           <div class = "form-cols-2">Budget Allocated</div>          
@@ -218,7 +218,7 @@
         <div class = "form-row">
           <div class = "form-cols-1">Remark</div>
           <div class = "form-cols-2">
-            <textarea type = "text"  maxlength="200" class = "input-7" ng-model="newrequisition.remarks"></textarea>
+            <textarea type = "text" style="width:580px;" maxlength="200" class = "input-7" ng-model="newrequisition.remarks"></textarea>
           </div>
         </div>
       </div>

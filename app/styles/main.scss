@@ -287,39 +287,36 @@ body{
 }
 .form-title{
 	@extend .bold;
-	padding: 5px;
-	display: flex;
-	text-align: center;
+	padding: 5px;	
 	background: #c9c7c9;
 	.title{
-		flex: 1;
+		text-align: center;
 		font-size: 15px;
-		text-overflow: ellipsis;
-	    overflow: hidden;
-	    white-space: nowrap;
+		width: 300px;		
+		display: inline-block;
+		
+	}	
+	.division-name{
+		width: 300px;
+		display: inline-block;
+	}
+	.budget-name{		
+		text-align: center;
+		width: 300px;
+		display: inline-block;
 	}
 	.newhead{	 
 		color: #9b826e;
 		margin-top: -25px;
 	    float: right;
-	    margin-right: 50px;
-	}
-	.division-name{
-		flex: .4;
-		text-align: left;
-		text-overflow: ellipsis;
-	    overflow: hidden;
-	    white-space: nowrap;
-	}
-	.budget-name{
-		flex: .4;
-		text-align: left;
-		text-overflow: ellipsis;
-	    overflow: hidden;
-	    white-space: nowrap;
+	    margin-right: 10px;
+	    display: inline-block;
 	}
 	.date{
-		flex: .2;
+		text-align: right;
+	    margin-right: 10px;
+	    width: 200px;
+	    display: inline-block;
 	}
 }
 $col-size: 20%;

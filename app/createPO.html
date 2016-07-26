@@ -24,11 +24,12 @@
 			<span class="label">Description</span>
 			<textarea ng-model="newpo.description" class="control"  maxlength="200"></textarea>
 		</div>
-		<div ng-hide="isPOSaving" style="overflow: hidden;">	      
-			<a class = "button-grashgreen" ng-click="savePO()" class="control" ng-hide="requisitionPOAmount + newpo.amount > currentRequisition.amount"> Save </a>
+		<div ng-hide="isPOSaving" style="overflow: hidden;">		
+			<p>{{parseFloat(requisitionPOAmount) + parseFloat(newpo.amount)}} = {{currentRequisition.amount}}</p>	
+			<a class = "button-grashgreen" ng-click="savePO()" class="control" ng-show="parseFloat(requisitionPOAmount) + parseFloat(newpo.amount) <= parseFloat(currentRequisition.amount)"> Save </a>
 	    </div>
-	    <div ng-show="requisitionPOAmount + newpo.amount > currentRequisition.amount" class="error">
+	    <div ng-hide="parseFloat(requisitionPOAmount) + parseFloat(newpo.amount) <= parseFloat(currentRequisition.amount)" class="error">
 			PO amount can not be greater than amount of Requisition.
-			</div>
+		</div>
 	</form>
 </div>

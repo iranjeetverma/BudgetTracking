@@ -160,11 +160,17 @@ angular.module('budgetTrackingApp').controller('MainCtrl',
         requisition.po.forEach(function(po){
           $scope.requisitionPOAmount += po.amount;
         })
-        $scope.currentRequisition = requisition
-        $scope.newpo = {            
+        $scope.currentRequisition = requisition        
+        $scope.newpo = {  
+            amount: 0,          
             requsitionid: requisition._id,
             ponumber: "PO/"+$rootScope.getCurrentFinYear()+"/"+nextPO,
             date: (new Date()).getDate() +'-'+ ((new Date()).getMonth()+1) +'-'+ (new Date()).getFullYear()
+        }
+        $scope.parseFloat = function(value){
+          if($rootScope.checkNumber(value))
+            return parseFloat(value)
+          else return 0
         }
         $scope.createPoDialog = ngDialog.open({ 
           template: 'createPO.html', 
