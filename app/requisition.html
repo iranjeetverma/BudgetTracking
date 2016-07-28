@@ -15,10 +15,11 @@
   <form class="container">
     <div class="form-row">
         <div class="form-cols-1">Requisition Number</div>
-        <div class="form-cols-1" style="font-stretch: condensed;font-size: 15px;">
+        <div class="form-cols-1 text-overflow"
+         style="font-stretch: condensed;font-size: 15px; max-width:170px;">
             {{newrequisition.requisitionnumber}}
         </div>
-        <div class="form-cols-2 text-overflow">Shop
+        <div class=" text-overflow form-cols-2 ">Shop
            <strong style="margin-left: 5px;">{{newrequisition.shopname}}</strong>
         </div> 
         <div class="form-cols-1">Cell
