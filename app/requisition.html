@@ -3,20 +3,24 @@
     <div class = "text-overflow title">Fixed Cost Requisition Form</div>
   </div>
   <div class = "form-title">
-      <div class = "text-overflow division-name">Division: {{selectedShopForNav.division}}</div>               
-      <div class = "text-overflow budget-name" >Budget Head: {{activeHead.headname}}</div>
+      <div class = "text-overflow division-name">Division: {{selectedShopForNav.division}}</div>  
       <div class="date">
         <div class="newhead" ng-hide="activeHead.newhead != 'true'">New Head</div>
         <div>Date: {{ today | date:"dd/MM/yyyy"}}</div>
+      </div>
+      <div>
+        <div class = "text-overflow budget-name" >Budget Head: {{activeHead.headname}}</div>
       </div>
   </div> 
   <form class="container">
     <div class="form-row">
         <div class="form-cols-1">Requisition Number</div>
-        <div class="form-cols-1">
-          {{newrequisition.requisitionnumber}}
+        <div class="form-cols-1" style="font-stretch: condensed;font-size: 15px;">
+            {{newrequisition.requisitionnumber}}
         </div>
-        <div class="form-cols-2 text-overflow">Shop: <strong>{{newrequisition.shopname}}</strong></div> 
+        <div class="form-cols-2 text-overflow">Shop
+           <strong style="margin-left: 5px;">{{newrequisition.shopname}}</strong>
+        </div> 
         <div class="form-cols-1">Cell
           <input type="text"  maxlength="200" class="input-4" ng-model="newrequisition.cell">
         </div>

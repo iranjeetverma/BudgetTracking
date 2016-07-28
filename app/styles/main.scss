@@ -299,12 +299,12 @@ body{
 		
 	}	
 	.division-name{
-		width: 300px;
+		width: 675px;
 		display: inline-block;
 	}
-	.budget-name{		
-		text-align: center;
-		width: 300px;
+	.budget-name{
+		padding-top: 8px;	
+		width: 880px;
 		display: inline-block;
 	}
 	.newhead{	 
@@ -518,7 +518,7 @@ input, textarea, select, option {
 	left: 30%;
 	margin: 0 auto;
 	transition: .5s;
-	z-index: 10001;
+	z-index: 10005;
 }
 
 .ng-hide { 

@@ -6,6 +6,7 @@ angular.module('budgetTrackingApp')
     if(!$scope.selectedShopForNav){
         $location.path( 'home' );
     }
+    document.getElementById('main').scrollTop  = 0;
     $scope.today = new Date()  
     $scope.activeHead = $rootScope.activeHead
     $scope.selectedShopForNav = $rootScope.selectedShopForNav
