@@ -1,4 +1,4 @@
-<div ng-repeat="head in filterHeads = (heads | shop: shop._id)">
+<div ng-repeat="head in filterHeads = (heads | shop: shop.shopname)">
   <div class = "requisition-tile">
     <div class = "tile selector" ng-click="openHead(head)">
       <i class="fa {{ activeHead == head  ? 'fa-caret-down' : 'fa-caret-right'}}" aria-hidden="true"></i>

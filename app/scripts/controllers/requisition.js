@@ -15,7 +15,7 @@ angular.module('budgetTrackingApp')
     $scope.quarters = [0,0,0,0]
     if($scope.heads){
         $scope.heads.forEach(function(head){
-            if(head.shopid == $scope.selectedShopForNav._id){
+            if(head.shopid == $scope.selectedShopForNav.shopname){
                 if(head.requisitions){
                     head.requisitions.forEach(function(req){
                         var m = moment(req.createdTimestamp,'DD-MM-YYYY').month() + 1
