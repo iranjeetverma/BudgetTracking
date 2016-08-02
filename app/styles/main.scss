@@ -16,10 +16,23 @@ body{
 	height: 100%;	
 }
 @media print {
-	.header .user, .nav-bar, .button-group{		
+	html, body {
+	    width: 250mm;
+	    height: 350mm;
+
+  	}
+ }
+ @media print{ 
+	.header .user, .header .hamburger, .nav-bar, .button-group, {		
 		display: none;
+	}
+}
+@media print{
+	.form-container{
+		 border: none !important;
 	}	
 }
+ 
 .header{
 	height: 40px;
 	border-bottom: 1px solid $border-color;
